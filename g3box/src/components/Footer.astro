@@ -37,17 +37,19 @@ const footerLinks = [
     links: [
       { name: 'Hướng dẫn cài đặt', href: '/#guides' },
       { name: 'Tài liệu kỹ thuật', href: '/#docs' },
-      { name: 'Bảo hành', href: '/#warranty' },
-      { name: 'Câu hỏi thường gặp', href: '/#faq' }
+      { name: 'Chính sách bảo hành', href: '/bao-hanh' },
+      { name: 'Chính sách vận chuyển', href: '/chinh-sach-van-chuyen' },
+      { name: 'Câu hỏi thường gặp', href: '/faq' }
     ]
   },
   {
     title: 'Về chúng tôi',
     links: [
-      { name: 'Giới thiệu', href: '/#about' },
-      { name: 'Showroom', href: '/#contact' },
-      { name: 'Tuyển dụng', href: '/#careers' },
-      { name: 'Liên hệ', href: '/#contact' }
+      { name: 'Giới thiệu', href: '/gioi-thieu' },
+      { name: 'Showroom', href: '/lien-he' },
+      { name: 'Liên hệ', href: '/lien-he' },
+      { name: 'Chính sách bảo mật', href: '/chinh-sach-bao-mat' },
+      { name: 'Điều khoản sử dụng', href: '/dieu-khoan' }
     ]
   }
 ];
@@ -215,11 +217,13 @@ const workingHours = [
       <div class="mt-8 pt-6 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-500">
         <p>© {new Date().getFullYear()} <span class="text-gray-400">{companyInfo.name}</span>. Tất cả quyền được bảo lưu.</p>
         <div class="flex items-center gap-3">
-          <a href="#" class="hover:text-white transition-colors">Chính sách bảo mật</a>
+          <a href="/chinh-sach-bao-mat" class="hover:text-white transition-colors">Chính sách bảo mật</a>
           <span class="text-gray-700">•</span>
-          <a href="#" class="hover:text-white transition-colors">Điều khoản sử dụng</a>
+          <a href="/dieu-khoan" class="hover:text-white transition-colors">Điều khoản sử dụng</a>
           <span class="text-gray-700">•</span>
-          <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+          <a href="/chinh-sach-van-chuyen" class="hover:text-white transition-colors">Vận chuyển</a>
+          <span class="text-gray-700">•</span>
+          <a href="/bao-hanh" class="hover:text-white transition-colors">Bảo hành</a>
         </div>
       </div>
     </div>
