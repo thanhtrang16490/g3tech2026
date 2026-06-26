@@ -91,7 +91,10 @@ const ogImage = image;
     <Footer />
     
     <!-- Structured Data (JSON-LD) -->
-    {structuredData && (
+    {structuredData && Array.isArray(structuredData) && structuredData.map((data) => (
+      <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))}
+    {structuredData && !Array.isArray(structuredData) && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
     
