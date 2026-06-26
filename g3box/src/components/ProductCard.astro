@@ -71,14 +71,17 @@ function getDiscount(original: number, current: number): number {
         class="w-full h-64 object-cover bg-gray-50 group-hover:scale-105 transition-transform duration-500"
         loading="lazy"
         decoding="async"
+        width="400"
+        height="400"
       />
     </a>
     
     {/* Wishlist Button */}
     <button 
-      class="absolute top-2 right-2 bg-white hover:bg-red-50 text-gray-600 hover:text-red-600 w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-10"
+      class="absolute top-2 right-2 bg-white hover:bg-red-50 text-gray-600 hover:text-red-600 w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-10 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
       aria-label="Thêm vào yêu thích"
       onclick="this.classList.toggle('text-red-600'); this.classList.toggle('bg-red-50');"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -124,15 +127,15 @@ function getDiscount(original: number, current: number): number {
   </div>
   
   <div class="p-4">
-    {/* Stock Indicator */}
-    {Math.random() > 0.6 && (
-      <div class="mb-2 flex items-center gap-2">
+    {/* Stock Indicator - Client-side only */}
+    <div class="mb-2 hidden" data-stock-indicator>
+      <div class="flex items-center gap-2">
         <div class="flex-1 bg-gray-200 rounded-full h-1.5 overflow-hidden">
-          <div class="bg-gradient-to-r from-orange-500 to-red-600 h-full rounded-full" style={`width: ${Math.floor(Math.random() * 40 + 20)}%`}></div>
+          <div class="bg-gradient-to-r from-orange-500 to-red-600 h-full rounded-full" style="width: 0%" data-stock-bar></div>
         </div>
         <span class="text-xs text-red-600 font-semibold whitespace-nowrap">Sắp hết hàng!</span>
       </div>
-    )}
+    </div>
     
     <a href={`/products/${productId}`} class="block group-hover:text-red-600 transition-colors">
       <h3 class="font-semibold text-lg mb-2 line-clamp-2 min-h-[3rem]">{productName}</h3>
@@ -144,12 +147,12 @@ function getDiscount(original: number, current: number): number {
     <div class="flex items-center mb-2">
       <div class="flex items-center">
         {Array.from({ length: 5 }, (_, i) => (
-          <span class={`text-base ${i < Math.floor(productRating) ? 'text-yellow-400' : 'text-gray-300'}`}>★</span>
+          <span class={`text-base ${i < Math.floor(productRating) ? 'text-yellow-400' : 'text-gray-300'}`} aria-hidden="true">★</span>
         ))}
       </div>
       <span class="text-sm text-gray-500 ml-2">({productReviews})</span>
       {productReviews > 0 && (
-        <span class="ml-2 text-xs text-green-600 font-semibold">✓ Đã bán {Math.floor(Math.random() * 50 + 10)}</span>
+        <span class="ml-2 text-xs text-green-600 font-semibold" data-sales-count>✓ Đã bán ...</span>
       )}
     </div>
     
@@ -162,3 +165,34 @@ function getDiscount(original: number, current: number): number {
     </div>
   </div>
 </div>
+
+<script define:vars={{productId}}>
+  // Initialize client-side only elements to prevent hydration mismatch
+  function initProductCard() {
+    const card = document.querySelector(`[data-product-card]`);
+    if (!card) return;
+    
+    // Randomly show stock indicator (60% chance)
+    const stockIndicator = card.querySelector('[data-stock-indicator]');
+    const stockBar = card.querySelector('[data-stock-bar]');
+    if (stockIndicator && stockBar && Math.random() > 0.4) {
+      stockIndicator.classList.remove('hidden');
+      const width = Math.floor(Math.random() * 40 + 20);
+      stockBar.style.width = `${width}%`;
+    }
+    
+    // Random sales count
+    const salesCount = card.querySelector('[data-sales-count]');
+    if (salesCount) {
+      const sales = Math.floor(Math.random() * 50 + 10);
+      salesCount.textContent = `✓ Đã bán ${sales}`;
+    }
+  }
+  
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProductCard);
+  } else {
+    initProductCard();
+  }
+</script>
