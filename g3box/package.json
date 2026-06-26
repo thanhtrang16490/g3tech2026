@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "npx serve dist",
+    "start": "serve dist -p $PORT -s",
     "astro": "astro",
     "download-images": "node download-images.mjs"
   },
