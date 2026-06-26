@@ -36,7 +36,7 @@ const { product } = Astro.props;
 
 // Helper to get product data from either format
 const isContentCollection = 'data' in product && product.data;
-const productId = product.id || product.slug || '';
+const productId = product.id || product.slug || 'unknown';
 const productName = isContentCollection ? product.data!.name : product.name || '';
 const productCategory = isContentCollection ? product.data!.category : product.category || '';
 const productPrice = isContentCollection ? product.data!.price : product.price || 0;
