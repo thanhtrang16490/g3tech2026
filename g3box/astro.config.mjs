@@ -12,6 +12,7 @@ export default defineConfig({
     tailwind(),
     react()
   ],
+  
   experimental: {
     clientPrerender: true
   }
