@@ -18,11 +18,6 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Nested git repositories (they have their own git)
-g-3.vn/
-g3active/
-g3tool/
-
 # Logs
 *.log
 npm-debug.log*

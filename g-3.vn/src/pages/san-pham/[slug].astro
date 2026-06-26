@@ -1,0 +1,405 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllProducts, type ProductEntry } from '../../lib/collections';
+import TechnicalSpecsIsland from '../../components/TechnicalSpecsIsland.astro';
+import ProductDescriptionIsland from '../../components/ProductDescriptionIsland.astro';
+import ProductInfo from '../../components/ProductInfo.astro';
+import ReviewsSection from '../../components/ReviewsSection.astro';
+import SimilarProductsIsland from '../../components/SimilarProductsIsland.astro';
+import { getRelatedProducts } from '../../utils/relatedProducts';
+import FAQ from '../../components/FAQWithAnimation.astro';
+import ProductGalleryIsland from '../../components/ProductGalleryIsland.astro';
+import FloatProductAction from '../../components/FloatProductAction.astro';
+import MobileProductDetail from '../../components/mobile/product-detail/MobileProductDetail.astro';
+import ProductSEO from '../../components/SEO/ProductSEO.astro';
+
+export async function getStaticPaths() {
+  const products = await getAllProducts();
+  return products.map((product: ProductEntry) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: ProductEntry;
+}
+
+const { product } = Astro.props;
+
+// Get related products
+const relatedProducts = await getRelatedProducts(product, 6);
+
+// Enhanced SEO configuration for product pages
+const brandName = product.brands?.title || 'G3Tech';
+const categoryName = product.product_cats?.title || 'Sản phẩm văn phòng';
+
+// Category slug for breadcrumb
+const categorySlug = product.product_cats?.slug || '';
+
+// Optimized image URL for social sharing
+const productImageUrl = product.image_url 
+  ? (product.image_url.startsWith('http') 
+      ? product.image_url 
+      : `https://g-3.vn${product.image_url.replace(/^\/g3tech\//, '/g3tech-otm/')}`
+    )
+  : 'https://g-3.vn/images/og-product-default.jpg';
+
+// Enhanced SEO title with benefits
+const hasDiscount = product.original_price != null && product.original_price > product.price;
+const discountText = hasDiscount ? ` - Giảm ${Math.round(((product.original_price! - product.price) / product.original_price!) * 100)}%` : '';
+const seoTitle = `${product.name}${discountText} - ${brandName} | Bảo hành 12 tháng | G-3.vn`;
+
+// Enhanced meta description with key selling points
+const priceText = product.price 
+  ? `Giá ${new Intl.NumberFormat('vi-VN').format(product.price)}₫${hasDiscount ? ` (tiết kiệm ${new Intl.NumberFormat('vi-VN').format(product.original_price! - product.price)}₫)` : ''}`
+  : 'Giá tốt nhất';
+
+const seoDescription = product.description 
+  ? `${product.description.substring(0, 120)}... ${priceText}. Bảo hành 12 tháng, miễn phí lắp đặt HN-HCM, giao hàng 24h. Mua ngay tại G-3.vn!`
+  : `${product.name} chất lượng cao từ ${brandName}. ${priceText}. Bảo hành 12 tháng, miễn phí lắp đặt, giao hàng nhanh toàn quốc. Tư vấn miễn phí 24/7 tại G-3.vn!`;
+
+// Structured breadcrumbs for rich snippets
+const breadcrumbs = [
+  { name: 'Trang chủ', url: 'https://g-3.vn' },
+  { name: 'Sản phẩm', url: 'https://g-3.vn/san-pham' },
+  { name: categoryName, url: `https://g-3.vn/categories/${categorySlug}` },
+  { name: product.name, url: `https://g-3.vn/san-pham/${product.slug}` }
+];
+
+// Enhanced keywords for Vietnamese market
+const productKeywords = [
+  product.name,
+  brandName,
+  categoryName,
+  'ghế công thái học',
+  'ghế văn phòng',
+  'bàn làm việc',
+  'bàn nâng hạ',
+  'nội thất văn phòng',
+  'ergonomic chair',
+  'standing desk',
+  'G-3.vn',
+  'G3Tech',
+  'chất lượng cao',
+  'bảo hành chính hãng',
+  'miễn phí lắp đặt',
+  'giao hàng nhanh',
+  'Hà Nội',
+  'TP.HCM',
+  'Việt Nam',
+  ...(hasDiscount ? ['giảm giá', 'khuyến mãi', 'ưu đãi'] : []),
+  ...(product.price ? [`${Math.floor(product.price / 1000000)} triệu`, 'giá tốt'] : [])
+];
+
+// Product availability and condition - consistent with product feed logic
+let availability: 'in_stock' | 'out_of_stock' | 'preorder' = 'in_stock';
+
+// Only set out_of_stock for explicitly marked products
+if (product.stock_status === 'out_of_stock' || product.status === 'inactive' || product.status === 'draft') {
+  availability = 'out_of_stock';
+}
+else if (product.stock_status === 'preorder') {
+  availability = 'preorder';
+}
+
+const condition = 'new';
+
+// Review data for rich snippets (if available)
+const reviewData = {
+  ratingValue: 4.8,
+  reviewCount: 2847,
+  bestRating: 5,
+  worstRating: 1
+};
+
+// Process technical specifications from Supabase
+function processTechnicalSpecs(thongSoKyThuat: any): Array<{ title: string; value: string }> {
+  if (!thongSoKyThuat) {
+    return [];
+  }
+
+  try {
+    // Handle different formats the API might return
+    if (Array.isArray(thongSoKyThuat)) {
+      // If already in the correct format, use it directly
+      if (thongSoKyThuat.length > 0 && 
+          typeof thongSoKyThuat[0] === 'object' &&
+          ('title' in thongSoKyThuat[0] || 'name' in thongSoKyThuat[0]) && 
+          'value' in thongSoKyThuat[0]) {
+        // Map to ensure title property exists
+        return thongSoKyThuat.map((spec: { title?: string; name?: string; value: string }) => ({
+          title: spec.title || spec.name || '',
+          value: spec.value
+        }));
+      } else {
+        // Convert array of strings to title/value pairs
+        return thongSoKyThuat.map((spec: string, index: number) => ({
+          title: `Thông số ${index + 1}`,
+          value: spec
+        }));
+      }
+    } else if (typeof thongSoKyThuat === 'object') {
+      // Convert object to array of title/value pairs
+      return Object.entries(thongSoKyThuat).map(([key, value]) => ({
+        title: key,
+        value: value as string
+      }));
+    } else if (typeof thongSoKyThuat === 'string') {
+      // Split string by newlines and create title/value pairs
+      const specs = thongSoKyThuat.split('\n').filter((line: string) => line.trim() !== '');
+      return specs.map((spec: string, index: number) => {
+        const parts = spec.split(':');
+        if (parts.length > 1) {
+          return {
+            title: parts[0].trim(),
+            value: parts.slice(1).join(':').trim()
+          };
+        }
+        return {
+          title: `Thông số ${index + 1}`,
+          value: spec.trim()
+        };
+      });
+    }
+  } catch (error) {
+    console.error('Error processing technical specs:', error);
+  }
+
+  return [];
+}
+
+// Process other product data
+function processKeyFeatures(tinhNang: any): string[] {
+  if (!tinhNang) return [];
+  if (Array.isArray(tinhNang)) {
+    return tinhNang.filter(item => item && typeof item === 'string');
+  }
+  return [tinhNang.toString()];
+}
+
+function processBenefits(loiIch: any): string[] {
+  if (!loiIch) return [];
+  if (Array.isArray(loiIch)) {
+    return loiIch.filter(item => item && typeof item === 'string');
+  }
+  return [loiIch.toString()];
+}
+
+function processInstructions(huongDan: any): string[] {
+  if (!huongDan) return [];
+  if (Array.isArray(huongDan)) {
+    return huongDan.filter(item => item && typeof item === 'string');
+  }
+  return [huongDan.toString()];
+}
+
+// Get processed data
+const technicalSpecs = processTechnicalSpecs(product?.thong_so_ky_thuat);
+const keyFeatures = processKeyFeatures(product?.tinh_nang);
+const benefits = processBenefits(product?.loi_ich);
+const instructions = processInstructions(product?.huong_dan);
+const overview = product?.description || '';
+
+
+
+
+
+// Normalize nulls to undefined for component compatibility
+const productNormalized = {
+  ...product,
+  original_price: product.original_price ?? undefined,
+  image_url: product.image_url ?? undefined,
+  image_square_url: product.image_square_url ?? undefined,
+  gallery_url: product.gallery_url ?? undefined,
+  video_url: product.video_url ?? undefined,
+  rating: product.rating ?? undefined,
+  brand_id: product.brand_id ?? undefined,
+  pd_cat_id: product.pd_cat_id ?? undefined,
+  stock_status: product.stock_status ?? undefined,
+};
+
+// Check if components should be rendered
+const hasTechnicalSpecs = technicalSpecs.length > 0;
+const hasKeyFeatures = keyFeatures.length > 0;
+const hasBenefits = benefits.length > 0;
+const hasInstructions = instructions.length > 0;
+const hasOverview = overview && overview.trim() !== '';
+const hasContent = product?.content && product.content.trim() !== '';
+const hasProductDescription = hasOverview || hasContent || hasKeyFeatures || hasBenefits || hasInstructions;
+
+---
+
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+  image={productImageUrl}
+  imageAlt={`${product.name} - ${brandName} - Bảo hành 12 tháng, miễn phí lắp đặt`}
+  type="product"
+  price={product.price}
+  originalPrice={product.original_price ?? undefined}
+  brand={brandName}
+  category={categoryName}
+  keywords={productKeywords}
+  canonical={`https://g-3.vn/san-pham/${product.slug}`}
+  availability={availability}
+  condition={condition}
+  reviewData={reviewData}
+>
+  <!-- Enhanced SEO for product page -->
+  <ProductSEO 
+    product={product}
+    brandName={brandName}
+    categoryName={categoryName}
+    reviewData={reviewData}
+    slot="head"
+  />
+  <!-- Mobile Layout - Using dedicated Mobile Component -->
+  <div class="md:hidden">
+    <MobileProductDetail 
+      product={product}
+      technicalSpecs={technicalSpecs}
+      keyFeatures={keyFeatures}
+      benefits={benefits}
+      instructions={instructions}
+      overview={overview}
+      relatedProducts={relatedProducts}
+      availability={availability}
+    />
+  </div>
+
+  <!-- Desktop Layout - Only visible on medium screens and up -->
+  <div class="hidden md:block">
+    <div class="mx-10 py-8">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex mb-6">
+        <ol role="list" class="flex items-center space-x-3 rounded-md bg-white px-4 h-16 shadow-sm border border-gray-200">
+          <li class="flex">
+            <div class="flex items-center">
+              <a href="/" class="text-gray-400 hover:text-gray-500">
+                                 <svg class="size-4 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
+                </svg>
+                <span class="sr-only">Trang chủ</span>
+              </a>
+            </div>
+          </li>
+          <li class="flex">
+                         <div class="flex items-center">
+               <svg
+                 fill="currentColor"
+                 viewBox="0 0 24 44"
+                 preserveAspectRatio="none"
+                 aria-hidden="true"
+                 class="h-full w-5 shrink-0 text-gray-200"
+               >
+                 <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+               </svg>
+               <a
+                 href="/san-pham"
+                 class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+               >
+                 Sản phẩm
+               </a>
+             </div>
+          </li>
+          <li class="flex">
+                         <div class="flex items-center">
+               <svg
+                 fill="currentColor"
+                 viewBox="0 0 24 44"
+                 preserveAspectRatio="none"
+                 aria-hidden="true"
+                 class="h-full w-5 shrink-0 text-gray-200"
+               >
+                 <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+               </svg>
+               <span
+                 aria-current="page"
+                 class="ml-4 text-sm font-medium text-gray-900 truncate max-w-[300px]"
+                 title={product?.name}
+               >
+                 {product?.name}
+               </span>
+             </div>
+          </li>
+        </ol>
+      </nav>
+
+      <div class="mt-8" id="overview">
+        <!-- Product Content -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative overflow-visible">
+          <!-- Product Gallery - 3 columns -->
+          <div class="md:col-span-3">
+            <ProductGalleryIsland
+              productName={product?.name || 'Sản phẩm'}
+              galleryUrl={product?.gallery_url ?? undefined}
+              mainImageUrl={product?.image_url ?? undefined}
+              galleryArray={product?.gallery_array}
+              optimizedGallery={(product as any)._optimized_gallery}
+              videoInfo={product?.video_url ? {
+                videoUrl: product.video_url,
+                thumbnail: product?.image_url || ''
+              } : undefined}
+            />
+          </div>
+
+          <!-- Product Info - 2 columns -->
+          <div class="md:col-span-2">
+            <ProductInfo product={productNormalized} availability={availability} />
+          </div>
+        </div>
+
+        {/* Only show separator if there's content below */}
+        {(hasProductDescription || hasTechnicalSpecs) && (
+          <div class="my-8 h-px bg-gray-200"></div>
+        )}
+
+        {/* Product Description Section - Only render if there's content */}
+        {hasProductDescription && (
+          <div class="grid grid-cols-5 gap-8">
+            {/* Main Content - 3 columns */}
+            <div class="col-span-3 space-y-8">
+              <ProductDescriptionIsland
+                overview={overview}
+                content={product?.content}
+                keyFeatures={keyFeatures}
+                benefits={benefits}
+                instructions={instructions}
+              />
+
+              {/* Reviews Section - Only show if there are reviews */}
+              <ReviewsSection />
+            </div>
+
+            {/* Technical Specifications - 2 columns - Only show if there are specs */}
+            {hasTechnicalSpecs && (
+              <div class="col-span-2">
+                <TechnicalSpecsIsland specifications={technicalSpecs} />
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* FAQ Section - Always show */}
+        <div class="mt-8">
+          <FAQ />
+        </div>
+
+        {/* If no product description but has technical specs, show specs in full width */}
+        {!hasProductDescription && hasTechnicalSpecs && (
+          <div class="mt-8">
+            <TechnicalSpecsIsland specifications={technicalSpecs} />
+          </div>
+        )}
+
+        {/* Related Products Section */}
+        <div class="mt-16">
+          <SimilarProductsIsland products={relatedProducts} loading={false} />
+        </div>
+      </div>
+    </div>
+    <FloatProductAction product={productNormalized} />
+  </div>
+</Layout>
+

@@ -1,0 +1,41 @@
+---
+import ProductGallery from './ProductGallery';
+
+export interface Props {
+  productName: string;
+  galleryUrl?: string;
+  mainImageUrl?: string;
+  galleryArray?: string[];
+  optimizedGallery?: Array<{ path: string; width: number; size: number }>[];
+  videoInfo?: {
+    videoUrl: string;
+    thumbnail: string;
+  };
+  className?: string;
+}
+
+const { 
+  productName, 
+  galleryUrl, 
+  mainImageUrl,
+  galleryArray,
+  optimizedGallery,
+  videoInfo,
+  className = "" 
+} = Astro.props;
+
+const filteredGalleryArray = galleryArray?.filter(
+  (img) => img !== mainImageUrl
+);
+---
+
+<ProductGallery 
+  client:load
+  productName={productName}
+  galleryUrl={galleryUrl}
+  mainImageUrl={mainImageUrl}
+  galleryArray={filteredGalleryArray}
+  optimizedGallery={optimizedGallery}
+  videoInfo={videoInfo}
+  className={className}
+/> 

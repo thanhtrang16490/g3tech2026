@@ -1,0 +1,545 @@
+---
+import MobileProductGallery from './MobileProductGallery';
+import MobileProductDescription from './MobileProductDescription';
+import MobileTechnicalSpecs from './MobileTechnicalSpecs';
+import MobileProductActions from './MobileProductActions';
+import MobileHeader from '../MobileHeader';
+import MobileProductHero from './MobileProductHero';
+import MobileTrustSignals from './MobileTrustSignals';
+import MobileSocialProof from './MobileSocialProof';
+import MobileProblemSolution from './MobileProblemSolution';
+import MobileBenefitsShowcase from './MobileBenefitsShowcase';
+import MobileEnhancedReviews from './MobileEnhancedReviews';
+import MobileCTASection from './MobileCTASection';
+import MobileProductLoader from '../MobileProductLoader';
+
+interface Props {
+  product: any;
+  technicalSpecs: Array<{ title: string; value: string }>;
+  keyFeatures: string[];
+  benefits: string[];
+  instructions: string[];
+  overview: string;
+  relatedProducts?: any[];
+  availability?: string;
+}
+
+const { product, technicalSpecs, keyFeatures, benefits, instructions, overview, relatedProducts = [], availability = 'in_stock' } = Astro.props;
+
+// Get brand name from product - brand is an object from brands table
+const brandName = product.brand?.title || 'Chi tiết sản phẩm';
+
+// Debug log để kiểm tra dữ liệu
+if (typeof window === 'undefined') {
+  console.log('Mobile Product Detail Data:', {
+    product: product?.name || 'No product name',
+    brandName: brandName,
+    brandData: product?.brand,
+    brandType: typeof product?.brand,
+    brandId: product?.brand?.id,
+    brandNameField: product?.brand?.name,
+    brandTitleField: product?.brand?.title,
+    hasProduct: !!product,
+    productId: product?.id,
+    productSlug: product?.slug,
+    hasTechnicalSpecs: technicalSpecs?.length > 0,
+    hasKeyFeatures: keyFeatures?.length > 0,
+    hasBenefits: benefits?.length > 0,
+    hasInstructions: instructions?.length > 0,
+    hasOverview: !!overview,
+    techSpecsCount: technicalSpecs?.length || 0,
+    keyFeaturesCount: keyFeatures?.length || 0,
+    benefitsCount: benefits?.length || 0,
+    instructionsCount: instructions?.length || 0,
+    hasPrice: !!product?.price,
+    hasImage: !!product?.image_url,
+    hasBrand: !!product?.brand,
+    hasRelatedProducts: relatedProducts?.length > 0
+  });
+}
+
+// FAQ items
+const faqItems = [
+  {
+    question: "Ghế công thái học phù hợp cho đối tượng nào?",
+    answer: "Ghế phù hợp cho nhân viên văn phòng, học sinh, sinh viên, game thủ và bất kỳ ai cần ngồi lâu."
+  },
+  {
+    question: "Bảo hành sản phẩm trong bao lâu?",
+    answer: "Sản phẩm được bảo hành 12 tháng cho phần cơ khí và 6 tháng cho lưới."
+  },
+  {
+    question: "Có miễn phí lắp đặt không?",
+    answer: "G3-TECH miễn phí lắp đặt tại Hà Nội và TP. Hồ Chí Minh."
+  },
+  {
+    question: "Sản phẩm có thể tùy chỉnh như thế nào?",
+    answer: "Sản phẩm có thể điều chỉnh chiều cao, tựa đầu, tựa lưng, các tay và góc ngả giúp phù hợp với mọi tư thế và nhu cầu sử dụng."
+  },
+  {
+    question: "Chất liệu lưới có bị bám bụi không?",
+    answer: "Chất liệu lưới Solidmesh USA có khả năng chống bám bụi tốt và dễ dàng vệ sinh bằng khăn ẩm."
+  }
+];
+
+// Old reviews data removed - now using MobileEnhancedReviews component
+---
+
+<!-- Mobile Product Detail Layout -->
+{product ? (
+<MobileProductLoader client:load disabled={true}>
+<div class="bg-gray-50 min-h-screen -mb-20">
+  <!-- Mobile Header -->
+  <MobileHeader 
+    client:load 
+    title={brandName}
+    showBack={true}
+    showShare={true}
+  />
+  
+  <!-- Content without padding - gallery directly under header -->
+  <div class="pt-0">
+    <!-- Product Gallery - Using Island (MOVED TO TOP) -->
+    <div class="w-full bg-white">
+      <MobileProductGallery 
+        client:load 
+        product={product}
+      />
+    </div>
+
+    <!-- Hero Section - NEW -->
+    <MobileProductHero 
+      client:load 
+      product={product}
+      availability={availability}
+    />
+
+    <!-- Trust Signals - NEW -->
+    <MobileTrustSignals 
+      client:load 
+    />
+
+  <!-- Product Info - REMOVED (no content to display) -->
+
+  <!-- Social Proof Notifications - NEW -->
+  <div class="fade-in-on-scroll">
+    <MobileSocialProof 
+      client:visible 
+    />
+  </div>
+
+  <!-- Problem-Solution Section - NEW -->
+  <div class="fade-in-on-scroll">
+    <MobileProblemSolution 
+      client:visible 
+    />
+  </div>
+
+  <!-- Benefits Showcase - NEW -->
+  <div class="fade-in-on-scroll">
+    <MobileBenefitsShowcase 
+      client:visible 
+    />
+  </div>
+
+  <!-- Primary CTA - NEW -->
+  <div class="fade-in-on-scroll mb-4">
+    <MobileCTASection 
+      client:load 
+      product={product}
+      variant="primary"
+      disableLoading={true}
+    />
+  </div>
+
+  <!-- Content Separator -->
+  <div class="h-4 bg-gray-100"></div>
+
+  <!-- Product Description - Using Island -->
+  {(overview || product?.description || product?.content || (keyFeatures && keyFeatures.length > 0) || (benefits && benefits.length > 0) || (instructions && instructions.length > 0)) && (
+    <div class="bg-white mb-2">
+      <MobileProductDescription 
+        client:load 
+        product={product}
+        overview={overview}
+        keyFeatures={keyFeatures}
+        benefits={benefits}
+        instructions={instructions}
+      />
+    </div>
+  )}
+
+  <!-- Technical Specifications - Using Island -->
+  {technicalSpecs && technicalSpecs.length > 0 && (
+    <div class="bg-white mb-2">
+      <MobileTechnicalSpecs 
+        client:load 
+        specifications={technicalSpecs}
+      />
+    </div>
+  )}
+
+  <!-- Content Separator -->
+  <div class="h-4 bg-gray-100"></div>
+
+  <!-- Enhanced Reviews Section - NEW -->
+  <div class="fade-in-on-scroll">
+    <MobileEnhancedReviews 
+      client:visible 
+    />
+  </div>
+
+  <!-- Secondary CTA - NEW with optimal spacing -->
+  <div class="fade-in-on-scroll my-6">
+    <MobileCTASection 
+      client:load 
+      product={product}
+      variant="secondary"
+      disableLoading={true}
+    />
+  </div>
+
+  <!-- Content Separator -->
+  <div class="h-4 bg-gray-100"></div>
+
+  <!-- FAQ Section - Simplified -->
+  <div class="bg-white mb-2">
+    <div class="p-4">
+      <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+        <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Câu hỏi thường gặp
+      </h3>
+      
+      <!-- Show only top 3 FAQs to avoid overwhelming -->
+      <div class="space-y-3">
+        {faqItems.slice(0, 3).map((faq, index) => (
+          <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <button
+              class="w-full px-4 py-3 text-left bg-white hover:bg-gray-50 transition-colors flex items-center justify-between"
+              onclick={`toggleFAQ(${index})`}
+            >
+              <span class="text-sm font-medium text-gray-900">{faq.question}</span>
+              <svg class="w-5 h-5 text-gray-500 transform transition-transform" id={`faq-icon-${index}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="hidden px-4 pb-3 bg-gray-50 border-t border-gray-200" id={`faq-answer-${index}`}>
+              <p class="text-sm text-gray-700 leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- View More FAQs Button -->
+      <button class="w-full mt-4 py-2 text-red-600 text-sm font-medium hover:bg-red-50 rounded-lg transition-colors border border-red-200">
+        Xem thêm câu hỏi
+      </button>
+    </div>
+  </div>
+
+  <!-- Final CTA - NEW with emphasis -->
+  <div class="fade-in-on-scroll my-8">
+    <MobileCTASection 
+      client:load 
+      product={product}
+      variant="final"
+      disableLoading={true}
+    />
+  </div>
+
+  <!-- Related Products - REMOVED from mobile for better focus -->
+
+  <!-- Sticky Bottom Actions - Using Island -->
+  <MobileProductActions 
+    client:load 
+    product={product}
+  />
+
+    <!-- Spacer to prevent content being hidden behind fixed actions -->
+    <div class="h-40"></div>
+  </div>
+</div>
+</MobileProductLoader>
+) : (
+  <div class="bg-gray-50 min-h-screen -mb-20">
+    <!-- Mobile Header for error state -->
+    <MobileHeader 
+      client:load 
+      title="Sản phẩm không tồn tại"
+      showBack={true}
+      showShare={false}
+    />
+    
+    <div class="pt-14 flex items-center justify-center min-h-screen">
+      <div class="text-center">
+        <div class="text-gray-500 text-lg mb-2">Không tìm thấy sản phẩm</div>
+        <a href="/san-pham" class="text-red-600 hover:text-red-700 font-medium">Xem tất cả sản phẩm</a>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  // FAQ toggle function
+  function toggleFAQ(index: number) {
+    const answer = document.getElementById('faq-answer-' + index);
+    const icon = document.getElementById('faq-icon-' + index);
+    
+    if (answer && icon) {
+      const isHidden = answer.classList.contains('hidden');
+      
+      if (isHidden) {
+        answer.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  }
+
+  // Intersection Observer for scroll animations
+  function initScrollAnimations() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with fade-in-on-scroll class
+    document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  // Initialize animations when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollAnimations();
+  });
+
+  // Make function globally available
+  (window as any).toggleFAQ = toggleFAQ;
+</script>
+
+<style>
+  /* Import animations */
+  @import url('/src/styles/mobile-animations.css');
+
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Enhanced animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 30px rgba(239, 68, 68, 0.6);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Animation classes */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2s infinite;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  /* Stagger delays */
+  .animate-stagger-1 { animation-delay: 0.1s; }
+  .animate-stagger-2 { animation-delay: 0.2s; }
+  .animate-stagger-3 { animation-delay: 0.3s; }
+  .animate-stagger-4 { animation-delay: 0.4s; }
+  .animate-stagger-5 { animation-delay: 0.5s; }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .button-press {
+    transition: transform 0.1s ease;
+  }
+
+  .button-press:active {
+    transform: scale(0.95);
+  }
+
+  /* Scroll animations */
+  .fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Smooth transitions */
+  .transition-all {
+    transition: all 0.3s ease;
+  }
+
+  .transition-colors {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .transition-transform {
+    transition: transform 0.2s ease;
+  }
+
+  /* Grid responsive */
+  @media (max-width: 640px) {
+    .grid-cols-2 > * {
+      min-width: 0;
+    }
+  }
+
+  /* Enhanced mobile experience */
+  @media (max-width: 768px) {
+    .animate-fade-in-up,
+    .animate-bounce-in,
+    .animate-scale-in {
+      animation-duration: 0.4s;
+    }
+  }
+
+  /* Skeleton loading animations */
+  @keyframes skeleton-loading {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+  /* Improved CTA spacing */
+  .cta-section {
+    margin: 1.5rem 0;
+  }
+
+  .cta-section:first-of-type {
+    margin-top: 1rem;
+  }
+
+  .cta-section:last-of-type {
+    margin-bottom: 2rem;
+  }
+
+  /* Content separators */
+  .content-separator {
+    height: 1rem;
+    background: linear-gradient(to bottom, #f9fafb, #f3f4f6, #f9fafb);
+    margin: 0.5rem 0;
+  }
+</style>

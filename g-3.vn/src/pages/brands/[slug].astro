@@ -1,0 +1,86 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getAllBrands, getProductsByBrandId, getAllCategories, type BrandEntry, type ProductEntry, type CategoryEntry } from "../../lib/collections";
+import BrandPageWrapper from "../../components/react/BrandPageWrapper";
+
+export async function getStaticPaths() {
+  const brands = await getAllBrands();
+  return brands.map((brand) => ({
+    params: { slug: brand.slug },
+    props: { brand },
+  }));
+}
+
+interface Props {
+  brand: BrandEntry;
+}
+
+const { slug } = Astro.params;
+const { brand } = Astro.props;
+
+// Pre-fetch products data at build time for better performance
+const allProducts = await getProductsByBrandId(brand.id);
+const initialProducts: ProductEntry[] = allProducts;
+
+// Gather categories that have products in this brand
+const allCategories = await getAllCategories();
+const categoryIds = [...new Set(allProducts.map((p) => p.pd_cat_id).filter(Boolean))];
+const categories: CategoryEntry[] = allCategories.filter((c) => categoryIds.includes(c.id));
+
+const brandInfo = {
+  title: brand?.title || slug || "Thương hiệu",
+  description: brand?.description,
+  image_url: brand?.image_url,
+};
+
+const title = `${brandInfo.title} | G3 - Công Thái Học`;
+const description =
+  brandInfo.description ||
+  `Khám phá các sản phẩm của thương hiệu ${brandInfo.title} tại G3.vn. Nội thất công thái học, bảo hành 12 tháng, giao hàng toàn quốc.`;
+---
+
+<Layout
+  title={title}
+  description={description}
+  image={brandInfo.image_url
+    ? `https://g-3.vn${brandInfo.image_url.replace(/^\/g3tech\//, "/g3tech-otm/").replace(/\.(jpg|jpeg|png|webp)$/i, ".avif")}`
+    : "https://g-3.vn/images/og-default.jpg"}
+  imageAlt={`${brandInfo.title} - G-3.vn`}
+  type="website"
+  keywords={[
+    brandInfo.title,
+    "G-3.vn",
+    "ghế công thái học",
+    "bàn làm việc",
+    "nội thất văn phòng",
+    "chất lượng cao",
+  ]}
+  canonical={`https://g-3.vn/brands/${brand?.slug || slug}`}
+>
+  <BrandPageWrapper
+    brandSlug={slug}
+    brandData={{ ...brand, id: String(brand.id), description: brand.description ?? undefined, image_url: brand.image_url ?? undefined }}
+    initialProducts={initialProducts.map(p => {
+      // Get optimized image if available
+      const optimizedImages = (p as any)._optimized_image || [];
+      const thumbnailImage = optimizedImages.length > 0 
+        ? optimizedImages.find((img: any) => img.width === 200) || optimizedImages[0]
+        : null;
+  
+      return { 
+        ...p, 
+        id: String(p.id), 
+        brand_id: p.brand_id ? String(p.brand_id) : undefined, 
+        pd_cat_id: p.pd_cat_id ? String(p.pd_cat_id) : undefined, 
+        original_price: p.original_price ?? undefined, 
+        image_url: p.image_url ?? undefined, 
+        image_square_url: p.image_square_url ?? undefined,
+        optimized_image_url: thumbnailImage?.path || undefined,
+        rating: p.rating ?? undefined 
+      };
+    })}
+    availableCategories={categories.map(c => ({ ...c, id: String(c.id), description: c.description ?? undefined, image_url: c.image_url ?? undefined }))}
+    client:idle
+  />
+</Layout>
+

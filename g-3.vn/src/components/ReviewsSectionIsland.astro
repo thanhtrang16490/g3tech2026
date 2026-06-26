@@ -1,0 +1,6 @@
+---
+import { ReviewsSection } from './ReviewsSection';
+const { comments, ratingSummary } = Astro.props;
+---
+
+<ReviewsSection client:visible comments={comments} ratingSummary={ratingSummary} /> 
