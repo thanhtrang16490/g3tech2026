@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#f8fafc"/>
+  
+  <!-- Lock body -->
+  <rect x="160" y="100" width="80" height="180" rx="10" fill="#1e293b" stroke="#334155" stroke-width="4"/>
+  
+  <!-- Lock handle -->
+  <path d="M170 140 Q200 120 230 140" stroke="#3b82f6" stroke-width="8" stroke-linecap="round" fill="none"/>
+  
+  <!-- Keypad -->
+  <rect x="175" y="160" width="50" height="80" rx="5" fill="#0f172a"/>
+  
+  <!-- Keypad buttons -->
+  <circle cx="185" cy="175" r="4" fill="#475569"/>
+  <circle cx="200" cy="175" r="4" fill="#475569"/>
+  <circle cx="215" cy="175" r="4" fill="#475569"/>
+  <circle cx="185" cy="190" r="4" fill="#475569"/>
+  <circle cx="200" cy="190" r="4" fill="#3b82f6"/>
+  <circle cx="215" cy="190" r="4" fill="#475569"/>
+  <circle cx="185" cy="205" r="4" fill="#475569"/>
+  <circle cx="200" cy="205" r="4" fill="#475569"/>
+  <circle cx="215" cy="205" r="4" fill="#475569"/>
+  
+  <!-- Fingerprint sensor -->
+  <rect x="185" y="250" width="30" height="15" rx="3" fill="#10b981"/>
+  
+  <!-- Brand text -->
+  <text x="200" y="340" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">Smart Lock</text>
+  <text x="200" y="365" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Aqara A100</text>
+</svg>

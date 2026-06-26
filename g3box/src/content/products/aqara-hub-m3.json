@@ -1,0 +1,22 @@
+{
+  "name": "Bộ Điều Khiển Trung Tâm Aqara HUB M3 Zigbee 3.0",
+  "category": "central-control",
+  "price": 3490000,
+  "originalPrice": 3990000,
+  "image": "https://thaihungsmarthome.com/wp-content/uploads/2024/01/aqara_hub_m3.png",
+  "badge": "Mới",
+  "rating": 5,
+  "reviews": 28,
+  "description": "Hub trung tâm Zigbee 3.0, tương thích Matter, điều khiển toàn bộ thiết bị Aqara",
+  "featured": true,
+  "hotDeal": false,
+  "newArrival": true,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-hub-m3",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Zigbee 3.0",
+    "Matter",
+    "WiFi",
+    "Bluetooth"
+  ]
+}

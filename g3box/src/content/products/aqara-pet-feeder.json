@@ -1,0 +1,22 @@
+{
+  "name": "Máy Cho Thú Cưng Ăn Tự Động Aqara C1",
+  "category": "home-appliance",
+  "price": 1850000,
+  "originalPrice": 2590000,
+  "image": "https://thaihungsmarthome.com/wp-content/uploads/2024/06/Aqara-Pet-Feeder-C1-2.jpg",
+  "badge": "Mới",
+  "rating": 5,
+  "reviews": 23,
+  "description": "Cho thú cưng ăn tự động, lên lịch qua app",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": true,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-pet-feeder",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Dung tích 2L",
+    "Zigbee",
+    "App điều khiển",
+    "Camera"
+  ]
+}

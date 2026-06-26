@@ -1,0 +1,22 @@
+{
+  "name": "Hub Trung Tâm Aqara M2",
+  "category": "central-control",
+  "price": 1490000,
+  "originalPrice": 1890000,
+  "image": "https://thaihungsmarthome.com/wp-content/uploads/2024/01/thi-cong-smart-home-tai-ecopark.png",
+  "badge": "Hot",
+  "rating": 5,
+  "reviews": 234,
+  "description": "Hub trung tâm Zigbee 3.0, kết nối tối đa 128 thiết bị, hồng ngoại điều khiển",
+  "featured": true,
+  "hotDeal": true,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-m2",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Zigbee 3.0, WiFi, Bluetooth",
+    "Kết nối tối đa 128 thiết bị",
+    "Cổng hồng ngoại điều khiển TV, điều hòa",
+    "Tương thích Apple HomeKit"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bóng Đèn Thông Minh Aqara LED Bulb T2",
+  "category": "smart-light",
+  "price": 550000,
+  "originalPrice": 690000,
+  "image": "https://thaihungsmarthome.com/wp-content/uploads/2024/11/LED-Bulb-T2E27-RGB-CCT.png",
+  "badge": null,
+  "rating": 4,
+  "reviews": 53,
+  "description": "Bóng đèn LED thông minh, điều chỉnh độ sáng và màu sắc",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-led-bulb-t2",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "9W",
+    "Zigbee",
+    "2700K-6500K",
+    "800 lumen"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Công Tắc Thông Minh Aqara H1 20A",
+  "category": "smart-switch",
+  "price": 880000,
+  "originalPrice": 1090000,
+  "image": "https://thaihungsmarthome.com/wp-content/uploads/2025/01/Huong-dan-cai-dat-Cong-tac-dan-tuong-Aqara-H1.png",
+  "badge": null,
+  "rating": 5,
+  "reviews": 36,
+  "description": "Công tắc thông minh chịu tải cao 20A",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-h1",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "20A",
+    "Zigbee",
+    "Không dây",
+    "2 gang"
+  ]
+}

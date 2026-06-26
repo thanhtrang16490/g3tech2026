@@ -1,0 +1,22 @@
+{
+  "name": "Công Tắc Thông Minh Aqara S1E",
+  "category": "smart-switch",
+  "price": 1290000,
+  "originalPrice": 1690000,
+  "image": "https://thaihungsmarthome.com/wp-content/uploads/2024/06/Aqara-S1E.png",
+  "badge": null,
+  "rating": 5,
+  "reviews": 21,
+  "description": "Công tắc màn hình OLED cao cấp",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-s1e",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Màn hình OLED",
+    "Zigbee",
+    "Cảm ứng",
+    "Kim loại"
+  ]
+}

@@ -1,0 +1,317 @@
+---
+import Icon from './Icon.astro';
+import G3BoxLogo from './G3BoxLogo';
+import { getCollection } from 'astro:content';
+
+// Load categories and featured products
+const allCategories = await getCollection('categories');
+const allProducts = await getCollection('products');
+const featuredProducts = allProducts.filter(p => p.data.featured).slice(0, 6);
+
+const menuItems = [
+  { name: 'Trang chủ', href: '/' },
+  { name: 'Giải pháp', href: '/#solutions' },
+  { 
+    name: 'Sản phẩm', 
+    href: '/products',
+    hasMegaMenu: true
+  },
+  { name: 'Hệ sinh thái', href: '/#ecosystem' },
+  { name: 'Tin tức', href: '/#news' },
+  { name: 'Liên hệ', href: '/#contact' }
+];
+
+const phoneNumber = '0947776662';
+const zaloUrl = 'https://zalo.me/0947776662';
+const showroomAddress = 'SH14-113, Ocenpark 2, xã Nghĩa Trụ, Hưng Yên';
+
+// Category icons and colors - inspired by thaihungsmarthome.com
+const categoryMeta: Record<string, { icon: string; color: string }> = {
+  'bo-dieu-khien-trung-tam': { icon: '🎛️', color: 'from-blue-500 to-blue-600' },
+  'cong-tac-thong-minh': { icon: '🔘', color: 'from-green-500 to-green-600' },
+  'den-thong-minh': { icon: '💡', color: 'from-yellow-500 to-orange-500' },
+  'khoa-cua-thong-minh': { icon: '🔐', color: 'from-purple-500 to-purple-600' },
+  'cam-bien-tu-dong-hoa': { icon: '📡', color: 'from-cyan-500 to-cyan-600' },
+  'camera-ai': { icon: '📹', color: 'from-red-500 to-red-600' },
+  'rem-tu-dong': { icon: '🪟', color: 'from-indigo-500 to-indigo-600' },
+  'loa-thong-minh': { icon: '🔊', color: 'from-pink-500 to-pink-600' },
+  'gia-dung-thong-minh': { icon: '🏡', color: 'from-teal-500 to-teal-600' },
+};
+
+// Brand categories (like thaihungsmarthome.com)
+const brandCategories = [
+  { name: 'Aqara Smart Home', slug: 'aqara', icon: '🏠' },
+  { name: 'Yeelight Lighting', slug: 'yeelight', icon: '💡' },
+  { name: 'EZVIZ Security', slug: 'ezviz', icon: '📹' },
+  { name: 'Xiaomi Smart', slug: 'xiaomi', icon: '📱' },
+];
+---
+
+<!-- Top Bar -->
+<div class="bg-gradient-to-r from-red-600 to-orange-600 text-white hidden md:block">
+  <div class="container">
+    <div class="flex items-center justify-between py-1 text-xs">
+      <div class="flex items-center gap-4">
+        <a href="tel:0947776662" class="flex items-center gap-1.5 hover:text-yellow-300 transition-colors">
+          <Icon name="phone" class="w-3.5 h-3.5" />
+          <span class="font-semibold">094 777 6662</span>
+        </a>
+        <span class="flex items-center gap-1.5 text-white/90">
+          <Icon name="location" class="w-3.5 h-3.5 text-yellow-300" />
+          <span class="max-w-sm truncate">{showroomAddress}</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="flex items-center gap-1.5">
+          <Icon name="clock" class="w-3.5 h-3.5 text-green-300" />
+          <span>Thứ 2 - CN: 8:00 - 21:00</span>
+        </span>
+        <a href={zaloUrl} target="_blank" class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full transition-all font-semibold flex items-center gap-1.5">
+          <Icon name="chat" class="w-3.5 h-3.5" />
+          <span>Chat Zalo</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header id="main-header" class="bg-white/95 backdrop-blur-xl shadow-xl sticky top-0 z-50 border-b border-gray-200/50 transition-all duration-300">
+  <div class="container">
+    <div class="flex items-center justify-between py-1">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <G3BoxLogo client:only="react" size="md" />
+        <div class="hidden lg:block">
+          <div class="text-sm font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Thiết Bị Nhà Thông Minh</div>
+          <div class="text-xs text-gray-600 font-medium">Chính hãng • Giá tốt • Bảo hành 24T</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden xl:flex items-center gap-1">
+        {menuItems.map((item, index) => (
+          <div class="relative group">
+            <a 
+              href={item.href}
+              class={`relative px-4 py-2.5 text-gray-700 hover:text-red-600 font-medium transition-all duration-300 rounded-lg overflow-hidden whitespace-nowrap ${
+                index === 0 ? 'bg-gradient-to-r from-red-50 to-orange-50 text-red-600 font-semibold' : ''
+              }`}
+            >
+              <span class="relative z-10">{item.name}</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-red-50 to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></span>
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-orange-600 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            
+            {/* Mega Menu for Products - Inspired by thaihungsmarthome.com */}
+            {item.hasMegaMenu && (
+              <div class="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 w-full">
+                <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 p-8">
+                  <div class="grid grid-cols-12 gap-8">
+                    {/* Left: Brand Categories (3 cols) */}
+                    <div class="col-span-3 border-r border-gray-200 pr-6">
+                      <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
+                        <span class="w-1 h-5 bg-gradient-to-b from-red-500 to-orange-500 rounded-full"></span>
+                        Thương hiệu
+                      </h3>
+                      <div class="space-y-2">
+                        {brandCategories.map(brand => (
+                          <a 
+                            href="/products"
+                            class="group/brand flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all"
+                          >
+                            <span class="text-2xl">{brand.icon}</span>
+                            <span class="font-semibold text-sm text-gray-800 group-hover/brand:text-red-600 transition-colors">{brand.name}</span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Center: Product Categories (6 cols) */}
+                    <div class="col-span-6">
+                      <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
+                        <span class="w-1 h-5 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full"></span>
+                        Danh mục sản phẩm
+                      </h3>
+                      <div class="grid grid-cols-2 gap-3">
+                        {allCategories.sort((a, b) => a.data.order - b.data.order).map(category => {
+                          const meta = categoryMeta[category.data.slug] || { icon: '📦', color: 'from-gray-500 to-gray-600' };
+                          const productCount = allProducts.filter(p => p.data.category === category.id).length;
+                          return (
+                            <a 
+                              href={`/products?category=${category.data.slug}`}
+                              class="group/item flex items-center gap-3 p-3 rounded-xl hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all border border-gray-100 hover:border-red-200 hover:shadow-md"
+                            >
+                              <div class={`bg-gradient-to-br ${meta.color} text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl shadow-md group-hover/item:scale-110 transition-transform flex-shrink-0`}>
+                                {meta.icon}
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                <div class="font-semibold text-sm text-gray-800 group-hover/item:text-red-600 transition-colors truncate">{category.data.name}</div>
+                                <div class="text-xs text-gray-500">{productCount} sản phẩm</div>
+                              </div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    
+                    {/* Right: Featured Products (3 cols) */}
+                    <div class="col-span-3">
+                      <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
+                        <span class="w-1 h-5 bg-gradient-to-b from-orange-500 to-red-500 rounded-full"></span>
+                        Hot Deals
+                      </h3>
+                      <div class="space-y-3">
+                        {featuredProducts.map(product => (
+                          <a 
+                            href={`/products/${product.id}`}
+                            class="group/item block"
+                          >
+                            <div class="bg-gray-50 rounded-lg aspect-square mb-2 overflow-hidden">
+                              <img 
+                                src={product.data.image} 
+                                alt={product.data.name}
+                                class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-300"
+                                loading="lazy"
+                              />
+                            </div>
+                            <div class="font-semibold text-xs text-gray-800 group-hover/item:text-red-600 transition-colors line-clamp-1">{product.data.name}</div>
+                            <div class="text-red-600 font-bold text-sm">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.data.price)}</div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Bottom CTA */}
+                  <div class="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between">
+                    <a 
+                      href="/products"
+                      class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105"
+                    >
+                      Xem tất cả sản phẩm
+                      <span>→</span>
+                    </a>
+                    <div class="text-sm text-gray-600">
+                      <span class="font-semibold text-red-600">{allProducts.length}</span> sản phẩm chính hãng
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Arrow indicator */}
+                <div class="absolute -top-2 left-20 w-4 h-4 bg-white border-l border-t border-gray-200 rotate-45"></div>
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        {/* Search Icon - Opens macOS-style modal */}
+        <button 
+          id="search-trigger-btn"
+          onclick="openSearchModal()"
+          class="text-gray-700 hover:text-red-600 p-2.5 rounded-xl hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all group"
+          aria-label="Tìm kiếm"
+        >
+          <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="xl:hidden text-gray-700 hover:text-red-600 p-2 rounded-xl hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all">
+          <Icon name="menu" class="w-6 h-6" id="menu-icon" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden xl:hidden pb-6 border-t border-gray-200 mt-3 pt-4">
+      <nav class="flex flex-col gap-2">
+        {menuItems.map((item, index) => (
+          <a 
+            href={item.href}
+            class={`text-gray-700 hover:text-red-600 font-medium py-3 px-4 rounded-xl transition-all duration-200 flex items-center gap-3 group ${
+              index === 0 ? 'bg-gradient-to-r from-red-50 to-orange-50 text-red-600 font-semibold' : 'hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50'
+            }`}
+          >
+            <Icon name="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" />
+            <span>{item.name}</span>
+          </a>
+        ))}
+        
+        <!-- Mobile Contact -->
+        <div class="pt-6 mt-2 border-t border-gray-200 space-y-3">
+          <a href={`tel:${phoneNumber}`} class="flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-3.5 rounded-xl hover:shadow-xl transition-all font-semibold group">
+            <div class="bg-white/20 p-2 rounded-lg group-hover:scale-110 transition-transform">
+              <Icon name="phone" class="w-5 h-5" />
+            </div>
+            <span>094 777 6662</span>
+          </a>
+          <a href={zaloUrl} target="_blank" class="flex items-center gap-3 bg-gradient-to-r from-red-600 to-orange-600 text-white px-5 py-3.5 rounded-xl hover:shadow-xl transition-all font-semibold group">
+            <div class="bg-white/20 p-2 rounded-lg group-hover:scale-110 transition-transform">
+              <Icon name="chat" class="w-5 h-5" />
+            </div>
+            <span>Chat Zalo tư vấn</span>
+          </a>
+          <div class="flex items-start gap-2 text-gray-700 px-4 py-3 bg-gray-50 rounded-xl">
+            <Icon name="location" class="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+            <span class="text-sm font-medium">{showroomAddress}</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const mainHeader = document.getElementById('main-header');
+  
+  let isOpen = false;
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu?.classList.toggle('hidden');
+    
+    // Update icon
+    if (menuIcon) {
+      menuIcon.innerHTML = isOpen 
+        ? '<path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+        : '<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+    }
+  });
+  
+  // Close mobile menu when clicking on a link
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      isOpen = false;
+      if (menuIcon) {
+        menuIcon.innerHTML = '<path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+      }
+    });
+  });
+  
+  // Header scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (mainHeader) {
+      if (currentScroll > 100) {
+        mainHeader.classList.add('shadow-2xl');
+        mainHeader.classList.remove('shadow-xl');
+      } else {
+        mainHeader.classList.remove('shadow-2xl');
+        mainHeader.classList.add('shadow-xl');
+      }
+    }
+    
+    lastScroll = currentScroll;
+  });
+</script>

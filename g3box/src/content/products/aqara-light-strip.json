@@ -1,0 +1,22 @@
+{
+  "name": "Đèn Led Dây Aqara Light Strip T1",
+  "category": "smart-light",
+  "price": 299000,
+  "originalPrice": 929000,
+  "image": "/images/aqara-strip.jpg",
+  "badge": null,
+  "rating": 4,
+  "reviews": 67,
+  "description": "Đèn LED dây trang trí 16 triệu màu",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-light-strip",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "2 mét",
+    "RGB",
+    "Zigbee",
+    "Cắt ngắn được"
+  ]
+}

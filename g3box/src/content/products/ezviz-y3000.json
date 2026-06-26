@@ -1,0 +1,23 @@
+{
+  "name": "Khóa Cửa Thông Minh EZVIZ Y3000FVP Plus",
+  "category": "smart-lock",
+  "price": 7890000,
+  "originalPrice": 11900000,
+  "image": "/images/ezviz-y3000.jpg",
+  "badge": null,
+  "rating": 5,
+  "reviews": 38,
+  "description": "Khóa nhận diện khuôn mặt và tĩnh mạch lòng bàn tay",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/ezviz-y3000",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Face ID",
+    "Tĩnh mạch",
+    "Camera",
+    "WiFi",
+    "App"
+  ]
+}
