@@ -2,7 +2,7 @@
 nixpkgs = ["nodejs_20"]
 
 [phases.install]
-cmds = ["yarn install --frozen-lockfile"]
+cmds = ["yarn install"]
 
 [phases.build]
 cmds = ["yarn build"]
