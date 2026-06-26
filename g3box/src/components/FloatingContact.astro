@@ -1,38 +1,39 @@
-<!-- Floating Contact Buttons -->
+<!-- Floating Contact Buttons - g-3.vn style -->
 <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
   <!-- Zalo Button -->
   <a 
     href="https://zalo.me/0947776662" 
     target="_blank"
-    class="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group relative"
+    rel="noopener nofollow"
+    class="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group relative animate-bounce-slow"
     aria-label="Chat Zalo"
   >
     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.36c-.45.45-1.04.68-1.64.68s-1.19-.23-1.64-.68c-.45-.45-.68-1.04-.68-1.64s.23-1.19.68-1.64c.45-.45 1.04-.68 1.64-.68s1.19.23 1.64.68c.91.91.91 2.37 0 3.28zM6 14c0-2.21 3.58-4 6-4s6 1.79 6 4v1H6v-1zm12-4.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>
     </svg>
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white text-gray-800 px-3 py-1 rounded-lg shadow-md text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-      Chat Zalo
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-xl text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-gray-200">
+      💬 Chat Zalo
     </span>
   </a>
 
   <!-- Phone Button -->
   <a 
     href="tel:0947776662"
-    class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group relative"
-    aria-label="Gọi điện"
+    class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group relative animate-pulse"
+    aria-label="Gọi tư vấn"
   >
-    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+    <svg class="w-7 h-7 animate-ring" viewBox="0 0 24 24" fill="currentColor">
       <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
     </svg>
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white text-gray-800 px-3 py-1 rounded-lg shadow-md text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-      094 777 6662
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-xl text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-gray-200">
+      📞 094 777 6662
     </span>
   </a>
 
   <!-- Back to Top Button -->
   <button 
     id="back-to-top"
-    class="bg-gray-700 hover:bg-gray-800 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 opacity-0 invisible"
+    class="bg-gray-700 hover:bg-gray-800 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 opacity-0 invisible translate-y-4"
     aria-label="Lên đầu trang"
   >
     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
@@ -41,16 +42,36 @@
   </button>
 </div>
 
+<style>
+  /* Slow bounce animation for Zalo */
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+  
+  /* Pulse animation for phone */
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+    50% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+  }
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style>
+
 <script>
   const backToTopBtn = document.getElementById('back-to-top');
   
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
-      backToTopBtn?.classList.remove('opacity-0', 'invisible');
-      backToTopBtn?.classList.add('opacity-100', 'visible');
+      backToTopBtn?.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+      backToTopBtn?.classList.add('opacity-100', 'visible', 'translate-y-0');
     } else {
-      backToTopBtn?.classList.add('opacity-0', 'invisible');
-      backToTopBtn?.classList.remove('opacity-100', 'visible');
+      backToTopBtn?.classList.add('opacity-0', 'invisible', 'translate-y-4');
+      backToTopBtn?.classList.remove('opacity-100', 'visible', 'translate-y-0');
     }
   });
   

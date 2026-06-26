@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProjectDetailPage from '../../components/react/ProjectDetailPage.tsx';
-import { getProjectById, projects } from '../../data/projects';
+import { getProjectById, projects } from '../../data/projects.ts';
 
 export async function getStaticPaths() {
   return projects.map((project) => ({
