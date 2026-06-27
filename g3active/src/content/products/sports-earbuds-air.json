@@ -7,10 +7,10 @@
   "image": "/images/products/sports-earbuds-air.jpg",
   "featured": true,
   "brand": "G3Active",
-  "specs": {
-    "battery": "8 hours + 24h case",
-    "waterproof": "IPX5",
-    "bluetooth": "5.3",
-    "weight": "5.4g per bud"
-  }
+  "specs": [
+    "Battery: 8 hours + 24h case",
+    "Waterproof: IPX5",
+    "Bluetooth: 5.3",
+    "Weight: 5.4g per bud"
+  ]
 }

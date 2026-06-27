@@ -7,10 +7,10 @@
   "image": "/images/products/fitness-tracker-v2.jpg",
   "featured": false,
   "brand": "G3Active",
-  "specs": {
-    "display": "0.96 inch OLED",
-    "battery": "10 days",
-    "waterproof": "30m",
-    "gps": false
-  }
+  "specs": [
+    "Display: 0.96 inch OLED",
+    "Battery: 10 days",
+    "Waterproof: 30m",
+    "Gps: false"
+  ]
 }

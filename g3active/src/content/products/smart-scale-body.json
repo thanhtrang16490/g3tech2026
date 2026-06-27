@@ -7,10 +7,10 @@
   "image": "/images/products/smart-scale-body.jpg",
   "featured": false,
   "brand": "G3Active",
-  "specs": {
-    "metrics": "13 body metrics",
-    "connectivity": "Bluetooth + WiFi",
-    "max_weight": "180kg",
-    "users": "Unlimited"
-  }
+  "specs": [
+    "Metrics: 13 body metrics",
+    "Connectivity: Bluetooth + WiFi",
+    "Max_weight: 180kg",
+    "Users: Unlimited"
+  ]
 }

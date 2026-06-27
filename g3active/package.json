@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "serve dist -p 3000 -s",
+    "start": "serve dist -p 3002 -s",
     "astro": "astro",
     "download-images": "node download-images.mjs"
   },

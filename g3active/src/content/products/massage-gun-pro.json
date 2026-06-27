@@ -7,10 +7,10 @@
   "image": "/images/products/massage-gun-pro.jpg",
   "featured": true,
   "brand": "G3Active",
-  "specs": {
-    "speeds": "6 levels",
-    "battery": "4 hours",
-    "amplitude": "12mm",
-    "weight": "680g"
-  }
+  "specs": [
+    "Speeds: 6 levels",
+    "Battery: 4 hours",
+    "Amplitude: 12mm",
+    "Weight: 680g"
+  ]
 }

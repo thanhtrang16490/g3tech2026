@@ -7,10 +7,10 @@
   "image": "/images/products/smartwatch-pro-x1.jpg",
   "featured": true,
   "brand": "G3Active",
-  "specs": {
-    "display": "1.4 inch AMOLED",
-    "battery": "7 days",
-    "waterproof": "50m",
-    "gps": true
-  }
+  "specs": [
+    "Display: 1.4 inch AMOLED",
+    "Battery: 7 days",
+    "Waterproof: 50m",
+    "Gps: true"
+  ]
 }
