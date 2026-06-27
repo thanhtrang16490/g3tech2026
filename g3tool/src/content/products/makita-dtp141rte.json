@@ -1,20 +1,18 @@
 {
-  "name": "Máy Bắt Vít 4 Chế Độ Dùng Pin DTP141RTE BL 18V",
+  "name": "MÁY BẮT VÍT 4 CHẾ ĐỘ DÙNG PIN DTP141RTE (BL)(18V) (Sạc nhanh(DC18RC), 2 pin 5.0Ah(BL1850B))",
   "category": "industrial-tools",
-  "price": 7850000,
-  "originalPrice": 9200000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/11/DTP141RTE.jpg",
-  "badge": "4 chế độ",
+  "price": 7200000,
+  "originalPrice": 8300000,
+  "image": "/images/products/dtp141rte-1.jpg",
+  "badge": "Makita Chính Hãng",
   "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 98,
-  "description": "Máy bắt vít 4 chế độ DTP141RTE, mô-men xoắn 165Nm, động cơ brushless, kèm 2 pin 5.0Ah",
+  "reviews": 12,
+  "description": "Sản phẩm Makita DTP141RTE chính hãng, chất lượng cao.",
   "specs": [
-    "Điện áp: 18V LXT",
-    "Mô-men xoắn: 165 Nm",
-    "4 chế độ hoạt động",
-    "Tốc độ: 0-2,100 vòng/phút",
-    "Pin: 2x 5.0Ah + sạc nhanh"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

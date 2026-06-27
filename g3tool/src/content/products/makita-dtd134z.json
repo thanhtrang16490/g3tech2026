@@ -1,20 +1,18 @@
 {
-  "name": "Máy Bắt Vít Dùng Pin Makita DTD134Z (Không Kèm Pin Sạc)",
+  "name": "Máy bắt vít dùng pin Makita DTD134Z (không kèm pin sạc)",
   "category": "industrial-tools",
-  "price": 2150000,
-  "originalPrice": 2600000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/11/DTD134Z.jpg",
-  "badge": "Giá rẻ",
-  "newArrival": false,
-  "featured": false,
+  "price": 3200000,
+  "originalPrice": 3700000,
+  "image": "/images/products/dtd134z-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
+  "featured": true,
   "rating": 5,
-  "reviews": 289,
-  "description": "Máy bắt vít dùng pin DTD134Z, thân máy không kèm pin sạc, mô-men xoắn 135Nm, giá rẻ nhất",
+  "reviews": 40,
+  "description": "Sản phẩm Makita DTD134Z chính hãng, chất lượng cao.",
   "specs": [
-    "Điện áp: 18V LXT",
-    "Mô-men xoắn: 135 Nm",
-    "Tốc độ: 0-3,600 vòng/phút",
-    "Không kèm pin và sạc",
-    "Bảo hành: 12 tháng Makita"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

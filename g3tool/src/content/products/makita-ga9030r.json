@@ -1,20 +1,18 @@
 {
-  "name": "Máy Mài Cầm Tay Makita GA9030R 230mm",
+  "name": "Máy mài cầm tay Makita GA9030R",
   "category": "industrial-tools",
-  "price": 2850000,
-  "originalPrice": 3400000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/10/GA9030R.jpg",
-  "badge": "Bán chạy",
-  "newArrival": false,
+  "price": 3500000,
+  "originalPrice": 4000000,
+  "image": "/images/products/ga9030r-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 234,
-  "description": "Máy mài cầm tay GA9030R, đĩa 230mm, công suất 2200W, mạnh mẽ nhất, phù hợp cắt sắt thép",
+  "reviews": 44,
+  "description": "Sản phẩm Makita GA9030R chính hãng, chất lượng cao.",
   "specs": [
-    "Công suất: 2200W",
-    "Đường kính đĩa: 230mm (9 inches)",
-    "Tốc độ: 6,600 vòng/phút",
-    "Tay cầm chống rung",
-    "Bảo hành: 12 tháng Makita"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

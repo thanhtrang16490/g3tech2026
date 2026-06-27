@@ -1,20 +1,18 @@
 {
-  "name": "Máy Bắt Vít Dùng Pin DTD156SF1J 18V",
+  "name": "MÁY BẮT VÍT DÙNG PIN DTD156SF1J (kèm 01 pin 3.0 (BL1830B) + sạc DC18SD)",
   "category": "industrial-tools",
-  "price": 4170000,
-  "originalPrice": 4900000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/11/DTD156SF1J.jpg",
-  "badge": "Giá tốt",
-  "newArrival": false,
+  "price": 5800000,
+  "originalPrice": 6700000,
+  "image": "/images/products/dtd156sf1j-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 156,
-  "description": "Máy bắt vít dùng pin DTD156SF1J, mô-men xoắn 175Nm, kèm 1 pin 3.0Ah và sạc, hộp đựng",
+  "reviews": 40,
+  "description": "Sản phẩm Makita DTD156SF1J chính hãng, chất lượng cao.",
   "specs": [
-    "Điện áp: 18V LXT",
-    "Mô-men xoắn: 175 Nm",
-    "Tốc độ: 0-3,500 vòng/phút",
-    "Pin: 1x 3.0Ah (BL1830B)",
-    "Hộp đựng: MacPac"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

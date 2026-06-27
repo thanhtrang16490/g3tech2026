@@ -1,0 +1,18 @@
+{
+  "name": "Máy khoan vặn vít dùng pin 18V Makita DDF490",
+  "category": "industrial-tools",
+  "price": 4500000,
+  "originalPrice": 5200000,
+  "image": "/images/products/ddf490.png",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
+  "featured": true,
+  "rating": 5,
+  "reviews": 38,
+  "description": "Sản phẩm Makita DDF490 chính hãng, chất lượng cao.",
+  "specs": [
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
+  ]
+}

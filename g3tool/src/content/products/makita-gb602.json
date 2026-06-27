@@ -1,20 +1,18 @@
 {
-  "name": "Máy Mài Bàn 2 Đá Makita GB602 150mm",
+  "name": "AL00000045 Cờ Lê 8-19 &#8211; GB602",
   "category": "industrial-tools",
-  "price": 3050000,
-  "originalPrice": 3600000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/10/GB602.jpg",
-  "badge": "Giá tốt",
-  "newArrival": false,
+  "price": 4800000,
+  "originalPrice": 5500000,
+  "image": "/images/products/gb602-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 145,
-  "description": "Máy mài bàn 2 đá GB602, đường kính đá 150mm, công suất 250W, giá rẻ nhất",
+  "reviews": 56,
+  "description": "Sản phẩm Makita GB602 chính hãng, chất lượng cao.",
   "specs": [
-    "Công suất: 250W",
-    "Đường kính đá: 150mm",
-    "Tốc độ: 2,950 vòng/phút",
-    "2 đá mài",
-    "Bảo hành: 12 tháng Makita"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

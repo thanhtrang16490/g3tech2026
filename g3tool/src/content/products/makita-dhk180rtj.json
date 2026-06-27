@@ -1,20 +1,18 @@
 {
-  "name": "Máy Cạo Động Lực Dùng Pin BL 18V DHK180RTJ",
+  "name": "MÁY CẠO ĐỘNG LỰC DÙNG PIN(BL)(18V) MAKITA DHK180RTJ (Sạc nhanh(DC18RC), 2 pin 5.0Ah(BL1850B))",
   "category": "industrial-tools",
-  "price": 9950000,
-  "originalPrice": 11500000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/12/DHK180RTJ.jpg",
-  "badge": "Mới",
+  "price": 8200000,
+  "originalPrice": 9400000,
+  "image": "/images/products/dhk180rtj-1.jpg",
+  "badge": "Makita Chính Hãng",
   "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 34,
-  "description": "Máy cạo động lực dùng pin BL 18V, phù hợp cạo sơn, vữa, keo, kèm 2 pin 5.0Ah và sạc nhanh",
+  "reviews": 43,
+  "description": "Sản phẩm Makita DHK180RTJ chính hãng, chất lượng cao.",
   "specs": [
-    "Điện áp: 18V LXT",
-    "Động cơ: Brushless",
-    "Chiều rộng cạo: 80mm",
-    "Hành trình: 1.8mm",
-    "Pin: 2x 5.0Ah + sạc nhanh DC18RC"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

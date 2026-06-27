@@ -1,20 +1,18 @@
 {
   "name": "Máy Khoan Bê Tông 3 Chức Năng Makita HR2470X5",
   "category": "industrial-tools",
-  "price": 3420000,
-  "originalPrice": 4100000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/10/HR2470X5.jpg",
-  "badge": "Bán chạy",
-  "newArrival": false,
+  "price": 5200000,
+  "originalPrice": 6000000,
+  "image": "/images/products/hr2470x5-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 189,
-  "description": "Máy khoan bê tông 3 chức năng HR2470X5, công suất 730W, khoan 24mm, giá tốt nhất",
+  "reviews": 57,
+  "description": "Sản phẩm Makita HR2470X5 chính hãng, chất lượng cao.",
   "specs": [
-    "Công suất: 730W",
-    "Đường kính khoan: 24mm (bê tông)",
-    "3 chức năng: Khoan/Khoan búa/Đục",
-    "Năng lượng đập: 2.7J",
-    "Bảo hành: 12 tháng Makita"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

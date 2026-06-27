@@ -1,21 +1,18 @@
 {
-  "name": "Máy Cắt Sắt Makita GA5030",
+  "name": "Máy mài góc Makita GA5030R",
   "category": "industrial-tools",
-  "price": 1680000,
-  "originalPrice": 1950000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/10/GA5030.jpg",
-  "badge": "Chính hãng",
-  "newArrival": false,
+  "price": 2100000,
+  "originalPrice": 2400000,
+  "image": "/images/products/ga5030-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
   "featured": true,
-  "rating": 4.7,
-  "reviews": 234,
-  "description": "Máy mài cắt sắt Makita GA5030 720W, đĩa 125mm, động cơ mạnh mẽ, bảo hành 12 tháng",
+  "rating": 5,
+  "reviews": 19,
+  "description": "Sản phẩm Makita GA5030 chính hãng, chất lượng cao.",
   "specs": [
-    "Công suất: 720W",
-    "Đĩa cắt: 125mm (5 inches)",
-    "Tốc độ: 11,000 vòng/phút",
-    "Trọng lượng: 1.8kg",
-    "Tay cầm phụ 3 vị trí",
-    "Bảo hành: 12 tháng Makita"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

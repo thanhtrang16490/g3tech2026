@@ -1,20 +1,18 @@
 {
-  "name": "Máy Mài 2 Đá Makita GB801 205mm",
+  "name": "AL00000063 Mặt Bích Trong &#8211; GB801",
   "category": "industrial-tools",
-  "price": 4960000,
-  "originalPrice": 5800000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/10/GB801.jpg",
-  "badge": "Hot",
-  "newArrival": false,
+  "price": 6500000,
+  "originalPrice": 7500000,
+  "image": "/images/products/gb801-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 92,
-  "description": "Máy mài 2 đá Makita GB801, đường kính đá 205mm, công suất 350W, phù hợp mài dao, dụng cụ",
+  "reviews": 28,
+  "description": "Sản phẩm Makita GB801 chính hãng, chất lượng cao.",
   "specs": [
-    "Công suất: 350W",
-    "Đường kính đá: 205mm",
-    "Tốc độ: 3,000 vòng/phút",
-    "2 đá mài (thô + mịn)",
-    "Bảo hành: 12 tháng Makita"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }

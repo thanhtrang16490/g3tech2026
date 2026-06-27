@@ -1,20 +1,18 @@
 {
-  "name": "Máy Khoan Bê Tông Dùng Pin DHR183RTWJ SDS-PLUS 18mm BL 18V",
+  "name": "Máy khoan bê tông dùng pin Makita DHR183RTWJ (Chuôi gài SDS&#8217;-PLUS/18MM/BL) (18V)",
   "category": "industrial-tools",
-  "price": 12190000,
-  "originalPrice": 14500000,
-  "image": "https://makitavietnam.com/wp-content/uploads/2023/11/DHR183RTWJ.jpg",
-  "badge": "Chính hãng",
-  "newArrival": false,
+  "price": 9500000,
+  "originalPrice": 10900000,
+  "image": "/images/products/dhr183rtwj-1.jpg",
+  "badge": "Makita Chính Hãng",
+  "newArrival": true,
   "featured": true,
   "rating": 5,
-  "reviews": 76,
-  "description": "Máy khoan bê tông dùng pin DHR183RTWJ, chuôi gài SDS-PLUS 18mm, động cơ brushless, kèm 2 pin 5.0Ah",
+  "reviews": 44,
+  "description": "Sản phẩm Makita DHR183RTWJ chính hãng, chất lượng cao.",
   "specs": [
-    "Điện áp: 18V LXT",
-    "Đường kính khoan: 18mm (bê tông)",
-    "Chuôi gài: SDS-PLUS",
-    "Động cơ: Brushless",
-    "Pin: 2x 5.0Ah + hộp MacPac"
+    "Thương hiệu: Makita",
+    "Xuất xứ: Nhật Bản",
+    "Bảo hành: 12 tháng"
   ]
 }
