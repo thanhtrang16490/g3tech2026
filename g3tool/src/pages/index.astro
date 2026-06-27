@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Icon from '../components/Icon.astro';
+import HeroCarousel from '../components/react/HeroCarousel';
 
 // Workaround: Use import.meta.glob() to load JSON files directly
 const productsRaw = import.meta.glob('../content/products/*.json', { eager: true });
