@@ -1,12 +1,24 @@
 ---
 import Icon from './Icon.astro';
 import G3BoxLogo from './G3BoxLogo';
+import SearchModal from './SearchModal.astro';
 import { getCollection } from 'astro:content';
 
 // Load categories and featured products
 const allCategories = await getCollection('categories');
 const allProducts = await getCollection('products');
 const featuredProducts = allProducts.filter(p => p.data.featured).slice(0, 6);
+
+// Products for search modal
+const products = allProducts.map(p => ({
+  id: p.id,
+  name: p.data.name,
+  slug: p.id.replace('.json', ''),
+  price: p.data.price,
+  image: p.data.image,
+  badge: p.data.badge || '',
+  category: p.data.category || ''
+}));
 
 const menuItems = [
   { name: 'Trang chủ', href: '/' },
@@ -316,3 +328,6 @@ const brandCategories = [
     lastScroll = currentScroll;
   });
 </script>
+
+<!-- Search Modal -->
+<SearchModal client:only products={products} />

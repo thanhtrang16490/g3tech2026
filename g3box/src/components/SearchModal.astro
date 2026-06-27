@@ -1,0 +1,220 @@
+---
+import { getCollection } from 'astro:content';
+
+// Load all products for client-side search
+const allProducts = await getCollection('products');
+const productsData = allProducts.map(p => ({
+  id: p.id,
+  name: p.data.name,
+  slug: p.id.replace('.json', ''),
+  price: p.data.price,
+  image: p.data.image,
+  badge: p.data.badge || '',
+  category: p.data.category || ''
+}));
+
+interface Props {
+  products: typeof productsData;
+}
+
+const { products: products } = Astro.props;
+---
+
+<!-- Search Modal -->
+<div id="search-modal" class="fixed inset-0 z-[100] hidden" aria-modal="true" role="dialog">
+  <!-- Backdrop -->
+  <div 
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+    onclick="closeSearchModal()"
+  ></div>
+  
+  <!-- Modal Content -->
+  <div class="fixed inset-0 flex items-start justify-center pt-20 px-4">
+    <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <!-- Search Input -->
+      <div class="flex items-center gap-3 p-4 border-b border-gray-200">
+        <svg class="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Tìm kiếm sản phẩm..."
+          class="flex-1 text-lg outline-none placeholder-gray-400"
+          oninput="handleSearchInput(this.value)"
+        />
+        <button
+          onclick="closeSearchModal()"
+          class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          aria-label="Đóng"
+        >
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Search Results -->
+      <div id="search-results" class="max-h-[60vh] overflow-y-auto">
+        <div id="search-loading" class="p-8 text-center text-gray-400">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <p class="mt-2 text-sm">Đang tải sản phẩm...</p>
+        </div>
+        <div id="search-empty" class="hidden p-8 text-center text-gray-400">
+          <svg class="mx-auto h-12 w-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <p class="mt-2 text-sm">Không tìm thấy sản phẩm nào</p>
+        </div>
+        <div id="search-results-list" class="hidden"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const products = JSON.parse(JSON.stringify(Astro.props.products));
+  
+  let searchTimeout: NodeJS.Timeout;
+  
+  function openSearchModal() {
+    const modal = document.getElementById('search-modal');
+    const input = document.getElementById('search-input');
+    if (modal) {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => input?.focus(), 100);
+      loadProducts();
+    }
+  }
+  
+  function closeSearchModal() {
+    const modal = document.getElementById('search-modal');
+    const input = document.getElementById('search-input');
+    if (modal) {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (input) (input as HTMLInputElement).value = '';
+      clearResults();
+    }
+  }
+  
+  function loadProducts() {
+    const loading = document.getElementById('search-loading');
+    const list = document.getElementById('search-results-list');
+    
+    if (products.length > 0) {
+      if (loading) loading.classList.add('hidden');
+      if (list && list.children.length === 0) {
+        // Show initial state - empty
+        const empty = document.getElementById('search-empty');
+        if (empty) empty.classList.remove('hidden');
+      }
+    }
+  }
+  
+  function handleSearchInput(query: string) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      performSearch(query);
+    }, 200);
+  }
+  
+  function performSearch(query: string) {
+    const loading = document.getElementById('search-loading');
+    const empty = document.getElementById('search-empty');
+    const list = document.getElementById('search-results-list');
+    
+    if (!query.trim()) {
+      if (loading) loading.classList.add('hidden');
+      if (empty) empty.classList.remove('hidden');
+      if (list) {
+        list.classList.add('hidden');
+        list.innerHTML = '';
+      }
+      return;
+    }
+    
+    if (loading) loading.classList.add('hidden');
+    
+    const searchTerm = query.toLowerCase();
+    const filtered = products.filter((product: any) => 
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm) ||
+      product.badge.toLowerCase().includes(searchTerm)
+    );
+    
+    if (filtered.length === 0) {
+      if (empty) empty.classList.remove('hidden');
+      if (list) {
+        list.classList.add('hidden');
+        list.innerHTML = '';
+      }
+    } else {
+      if (empty) empty.classList.add('hidden');
+      if (list) {
+        list.classList.remove('hidden');
+        list.innerHTML = filtered.map((product: any) => `
+          <a href="/products/${product.slug}" class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors border-b border-gray-100">
+            <img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover rounded-lg flex-shrink-0" loading="lazy" />
+            <div class="flex-1 min-w-0">
+              <h3 class="font-medium text-gray-900 truncate">${product.name}</h3>
+              ${product.badge ? `<span class="inline-block mt-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full">${product.badge}</span>` : ''}
+            </div>
+            <div class="text-right flex-shrink-0">
+              <p class="font-semibold text-red-600">${formatPrice(product.price)}</p>
+            </div>
+          </a>
+        `).join('');
+      }
+    }
+  }
+  
+  function formatPrice(price: number): string {
+    if (price === 0) return 'Liên hệ';
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  }
+  
+  function clearResults() {
+    const loading = document.getElementById('search-loading');
+    const empty = document.getElementById('search-empty');
+    const list = document.getElementById('search-results-list');
+    
+    if (loading) loading.classList.add('hidden');
+    if (empty) empty.classList.add('hidden');
+    if (list) {
+      list.classList.add('hidden');
+      list.innerHTML = '';
+    }
+  }
+  
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSearchModal();
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearchModal();
+    }
+  });
+  
+  // Make functions globally available
+  (window as any).openSearchModal = openSearchModal;
+  (window as any).closeSearchModal = closeSearchModal;
+  (window as any).handleSearchInput = handleSearchInput;
+</script>
+
+<style>
+  #search-results::-webkit-scrollbar {
+    width: 6px;
+  }
+  #search-results::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  #search-results::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+  #search-results::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
