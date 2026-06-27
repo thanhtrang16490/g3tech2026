@@ -16,10 +16,10 @@
   <text x="200" y="230" font-size="28" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif" fill="#0066B3">MAKITA</text>
   
   <!-- Product Model -->
-  <text x="200" y="270" font-size="22" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif" fill="#1F2937">GA5030</text>
+  <text x="200" y="270" font-size="22" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif" fill="#1F2937">GB602</text>
   
   <!-- Sublabel -->
-  <text x="200" y="300" font-size="16" text-anchor="middle" font-family="Arial, sans-serif" fill="#6B7280">720W</text>
+  <text x="200" y="300" font-size="16" text-anchor="middle" font-family="Arial, sans-serif" fill="#6B7280">150mm</text>
   
   <!-- Rating Badge -->
   <rect x="140" y="330" width="120" height="32" rx="16" fill="#0066B3"/>
