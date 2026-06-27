@@ -1,0 +1,21 @@
+{
+  "name": "Máy Khoan Pin Makita DDF490Z 18V",
+  "category": "industrial-tools",
+  "price": 2890000,
+  "originalPrice": 3500000,
+  "image": "/images/products/makita-ddf490z.jpg",
+  "badge": "Hot",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.9,
+  "reviews": 287,
+  "description": "Máy khoan vặn vít pin Makita DDF490Z 18V LXT, động cơ brushless, chính hãng bảo hành 12 tháng",
+  "specs": [
+    "Điện áp: 18V Lithium-ion LXT",
+    "Động cơ: Brushless (không chổi than)",
+    "Mô-men xoắn: 50 Nm (cứng)",
+    "Tốc độ: 0-600/0-1.900 vòng/phút",
+    "Đầu kẹp: 13mm không chìa",
+    "Bảo hành: 12 tháng chính hãng Makita"
+  ]
+}

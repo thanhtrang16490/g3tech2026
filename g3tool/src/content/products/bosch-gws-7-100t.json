@@ -1,0 +1,21 @@
+{
+  "name": "Máy Mài Góc Bosch GWS 7-100T",
+  "category": "industrial-tools",
+  "price": 1250000,
+  "originalPrice": 1550000,
+  "image": "/images/products/bosch-gws-7-100t.jpg",
+  "badge": "Bán chạy",
+  "newArrival": false,
+  "featured": true,
+  "rating": 4.8,
+  "reviews": 412,
+  "description": "Máy mài góc Bosch GWS 7-100T 720W, đĩa 100mm, chính hãng bảo hành 12 tháng",
+  "specs": [
+    "Công suất: 720W",
+    "Đĩa mài: 100mm (4 inches)",
+    "Tốc độ không tải: 12,000 vòng/phút",
+    "Trọng lượng: 1.8kg",
+    "Bảo vệ: Quá tải, chống khởi động lại",
+    "Bảo hành: 12 tháng chính hãng Bosch"
+  ]
+}

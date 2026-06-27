@@ -1,0 +1,21 @@
+{
+  "name": "Máy Cắt Sắt Makita GA5030",
+  "category": "industrial-tools",
+  "price": 1680000,
+  "originalPrice": 1950000,
+  "image": "/images/products/makita-ga5030.jpg",
+  "badge": "Chính hãng",
+  "newArrival": false,
+  "featured": true,
+  "rating": 4.7,
+  "reviews": 234,
+  "description": "Máy mài cắt sắt Makita GA5030 720W, đĩa 125mm, động cơ mạnh mẽ, bảo hành 12 tháng",
+  "specs": [
+    "Công suất: 720W",
+    "Đĩa cắt: 125mm (5 inches)",
+    "Tốc độ: 11,000 vòng/phút",
+    "Trọng lượng: 1.8kg",
+    "Tay cầm phụ 3 vị trí",
+    "Bảo hành: 12 tháng Makita"
+  ]
+}

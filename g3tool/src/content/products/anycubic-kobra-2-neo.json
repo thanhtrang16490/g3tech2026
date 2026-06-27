@@ -1,0 +1,21 @@
+{
+  "name": "Máy In 3D Anycubic Kobra 2 Neo",
+  "category": "3d-printers",
+  "price": 3900000,
+  "originalPrice": 4500000,
+  "image": "/images/products/anycubic-kobra-2-neo.jpg",
+  "badge": "Mới",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.7,
+  "reviews": 156,
+  "description": "Máy in 3D Anycubic Kobra 2 Neo tốc độ 250mm/s, tự động cân bằng, giá tốt cho người mới",
+  "specs": [
+    "Công nghệ: FDM",
+    "Khổ in: 220x220x250mm",
+    "Tốc độ tối đa: 250mm/s",
+    "Tự động cân bằng: LeviQ 2.0",
+    "Màn hình: LCD 2.4 inch",
+    "Bảo hành: 12 tháng"
+  ]
+}

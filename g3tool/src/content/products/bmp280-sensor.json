@@ -1,0 +1,21 @@
+{
+  "name": "Cảm Biến Áp Suất BMP280",
+  "category": "electronics-iot",
+  "price": 35000,
+  "originalPrice": 50000,
+  "image": "/images/products/bmp280-sensor.jpg",
+  "badge": "Giá tốt",
+  "newArrival": true,
+  "featured": false,
+  "rating": 4.6,
+  "reviews": 345,
+  "description": "Cảm biến áp suất BMP280 đo nhiệt độ/áp suất/độ cao, giao tiếp I2C/SPI",
+  "specs": [
+    "Áp suất: 300-1100 hPa",
+    "Nhiệt độ: -40~85°C",
+    "Độ chính xác: ±1 hPa",
+    "Giao tiếp: I2C/SPI",
+    "Điện áp: 1.8-3.6V",
+    "Ứng dụng: Weather station, IoT"
+  ]
+}

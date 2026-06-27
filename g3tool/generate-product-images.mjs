@@ -8,21 +8,31 @@ import fs from 'fs';
 import path from 'path';
 
 const products = [
-  // Industrial Tools
+  // Industrial Tools (8)
   { filename: 'drill-bosch-12v.jpg', icon: '🔧', label: 'Bosch GSR 12V', color: '#FF6B00' },
   { filename: 'bosch-gsb-12v-30.jpg', icon: '⚡', label: 'Bosch GSB 12V', color: '#FF6B00' },
   { filename: 'jasic-arc-200.jpg', icon: '⚡', label: 'Jasic ARC-200', color: '#0066CC' },
   { filename: 'mitutoyo-500-196-30.jpg', icon: '📏', label: 'Mitutoyo 500', color: '#00AA00' },
+  { filename: 'makita-ddf490z.jpg', icon: '🔧', label: 'Makita DDF490Z', color: '#00A651' },
+  { filename: 'dewalt-dcd996m2.jpg', icon: '⚡', label: 'DeWalt DCD996', color: '#FFB81C' },
+  { filename: 'bosch-gws-7-100t.jpg', icon: '⚙️', label: 'Bosch GWS 7-100', color: '#FF6B00' },
+  { filename: 'makita-ga5030.jpg', icon: '⚙️', label: 'Makita GA5030', color: '#00A651' },
   
-  // Electronics & IoT
+  // Measuring Instruments (2)
+  { filename: 'mitutoyo-543-720b.jpg', icon: '📊', label: 'Mitutoyo 543', color: '#00AA00' },
+  
+  // Electronics & IoT (4)
   { filename: 'arduino-uno-r3.jpg', icon: '💻', label: 'Arduino Uno R3', color: '#00979D' },
   { filename: 'arduino-starter-kit.jpg', icon: '🎁', label: 'Arduino Kit', color: '#00979D' },
   { filename: 'esp32-wifi.jpg', icon: '📡', label: 'ESP32 WiFi', color: '#E7352B' },
   { filename: 'dht22-sensor.jpg', icon: '🌡️', label: 'DHT22 Sensor', color: '#FF9900' },
+  { filename: 'bmp280-sensor.jpg', icon: '🔬', label: 'BMP280 Sensor', color: '#3B82F6' },
+  { filename: 'arduino-iot-kit.jpg', icon: '🌐', label: 'Arduino IoT', color: '#00979D' },
   
-  // 3D Printing
+  // 3D Printing (4)
   { filename: 'ender-3-v3-se.jpg', icon: '🖨️', label: 'Ender-3 V3 SE', color: '#FF0000' },
   { filename: 'ender-3-v3-ke.jpg', icon: '🖨️', label: 'Ender-3 V3 KE', color: '#FF0000' },
+  { filename: 'anycubic-kobra-2-neo.jpg', icon: '🖨️', label: 'Kobra 2 Neo', color: '#8B5CF6' },
   { filename: 'pla-filament-esun.jpg', icon: '🧵', label: 'PLA+ Filament', color: '#F59E0B' },
   { filename: 'petg-filament-esun.jpg', icon: '🧵', label: 'PETG Filament', color: '#3B82F6' }
 ];

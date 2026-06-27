@@ -1,0 +1,21 @@
+{
+  "name": "Máy Khoan Động Lực DeWalt DCD996M2 18V",
+  "category": "industrial-tools",
+  "price": 5885000,
+  "originalPrice": 6500000,
+  "image": "/images/products/dewalt-dcd996m2.jpg",
+  "badge": "Cao cấp",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.9,
+  "reviews": 198,
+  "description": "Máy khoan búa DeWalt DCD996M2 18V XR Brushless, 3 chế độ, bảo hành 3 năm",
+  "specs": [
+    "Điện áp: 18V XR Lithium",
+    "Động cơ: Brushless Motor",
+    "Mô-men xoắn: 95 Nm (cứng)",
+    "Tốc độ: 0-500/1500/2250 vòng/phút",
+    "3 chế độ: Khoan/Khoan búa/Bắt vít",
+    "Bảo hành: 3 năm chính hãng DeWalt"
+  ]
+}
