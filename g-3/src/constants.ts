@@ -4,7 +4,7 @@ export const COMPANY_INFO = {
   hotline: '0947776662',
   email: 'info@g-3.vn',
   supportEmail: 'info@g-3.vn',
-  address: 'Tầng 7, Tòa nhà Charmvit, số 117 Trần Duy Hưng, Q. Cầu Giấy, TP. Hà Nội.',
+  address: 'SH14-113, San hô 14, khu đô thị Ocenpark 2, xã Nghĩa Trụ, Hưng Yên',
   website: 'https://g-3.vn',
   workingHours: '8:00 - 17:30 (Thứ 2 - Thứ 6)',
   supportHours: '8:00 - 22:00 hàng ngày',
