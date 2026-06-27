@@ -8,4 +8,4 @@ cmds = ["corepack enable && yarn install"]
 cmds = ["yarn build"]
 
 [start]
-cmd = "serve dist -p $PORT -s"
+cmd = "serve dist -p 3001 -s"
