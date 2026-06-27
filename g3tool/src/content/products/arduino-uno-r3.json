@@ -1,20 +1,21 @@
 {
-  "name": "Arduino Uno R3 Chính Hãng",
+  "name": "Arduino Uno R3 Chính Hãng (Made in Italy)",
   "category": "electronics-iot",
-  "price": 145000,
-  "originalPrice": 180000,
+  "price": 756000,
+  "originalPrice": 950000,
   "image": "/images/products/arduino-uno-r3.jpg",
-  "badge": "Giá tốt",
+  "badge": "Original",
   "newArrival": true,
   "featured": true,
-  "rating": 4.7,
-  "reviews": 234,
-  "description": "Board Arduino Uno R3 ATmega328P chính hãng Italy",
+  "rating": 4.8,
+  "reviews": 312,
+  "description": "Arduino Uno R3 chính hãng Made in Italy, chip ATmega328P, đầy đủ hộp và tem chống giả",
   "specs": [
     "Vi điều khiển: ATmega328P",
     "Điện áp hoạt động: 5V",
-    "Digital I/O: 14 pins",
-    "Analog Input: 6 pins",
-    "USB: Type B"
+    "14 Digital I/O (6 PWM)",
+    "6 Analog I/O, 16 MHz",
+    "Flash 32KB, SRAM 2KB, EEPROM 1KB",
+    "Bảo hành: 12 tháng"
   ]
 }

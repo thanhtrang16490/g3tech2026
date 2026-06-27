@@ -1,0 +1,21 @@
+{
+  "name": "Máy Hàn Que Jasic ARC-200 R04",
+  "category": "industrial-tools",
+  "price": 4590000,
+  "originalPrice": 5200000,
+  "image": "/images/products/jasic-arc-200.jpg",
+  "badge": "Chính hãng",
+  "newArrival": false,
+  "featured": true,
+  "rating": 4.7,
+  "reviews": 145,
+  "description": "Máy hàn que điện tử Jasic ARC-200 công nghệ Inverter, tiết kiệm điện 50-60%, bảo hành 18 tháng",
+  "specs": [
+    "Công nghệ: Inverter IGBT",
+    "Dòng hàn: 20-160A",
+    "Que hàn: 2.0-4.0mm",
+    "Điện áp: 220V/50Hz",
+    "Trọng lượng: 8.0kg",
+    "Bảo hành: 18 tháng chính hãng"
+  ]
+}

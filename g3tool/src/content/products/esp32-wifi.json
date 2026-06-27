@@ -1,0 +1,21 @@
+{
+  "name": "Module ESP32 WiFi + Bluetooth",
+  "category": "electronics-iot",
+  "price": 95000,
+  "originalPrice": 120000,
+  "image": "/images/products/esp32-wifi.jpg",
+  "badge": "Giá tốt",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.6,
+  "reviews": 287,
+  "description": "Module ESP32 phát triển IoT, tích hợp WiFi và Bluetooth, tương thích Arduino IDE",
+  "specs": [
+    "Vi điều khiển: ESP32 Dual Core",
+    "WiFi: 802.11 b/g/n",
+    "Bluetooth: 4.2 BR/EDR + BLE",
+    "GPIO: 34 chân",
+    "Điện áp: 3.3V",
+    "Tương thích: Arduino IDE, MicroPython"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Cảm Biến Nhiệt Độ Độ Ẩm DHT22",
+  "category": "electronics-iot",
+  "price": 45000,
+  "originalPrice": 60000,
+  "image": "/images/products/dht22-sensor.jpg",
+  "badge": "Phổ biến",
+  "newArrival": false,
+  "featured": false,
+  "rating": 4.5,
+  "reviews": 412,
+  "description": "Cảm biến nhiệt độ và độ ẩm DHT22 chính xác cao, phù hợp dự án IoT và smart home",
+  "specs": [
+    "Nhiệt độ: -40~80°C (±0.5°C)",
+    "Độ ẩm: 0-100%RH (±2%RH)",
+    "Điện áp: 3.3-5V DC",
+    "Giao tiếp: 1-Wire",
+    "Kích thước: 14x18mm",
+    "Ứng dụng: Smart Home, IoT, Weather Station"
+  ]
+}

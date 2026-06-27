@@ -1,20 +1,21 @@
 {
-  "name": "Thước Kẹp Điện Tử Mitutoyo 150mm",
+  "name": "Thước Kẹp Điện Tử Mitutoyo 500-196-30",
   "category": "measuring-instruments",
-  "price": 890000,
-  "originalPrice": null,
-  "image": "/images/products/mitutoyo-caliper-150.jpg",
+  "price": 2890000,
+  "originalPrice": 3500000,
+  "image": "/images/products/mitutoyo-500-196-30.jpg",
   "badge": "Chính hãng",
-  "newArrival": false,
+  "newArrival": true,
   "featured": true,
   "rating": 4.9,
-  "reviews": 89,
-  "description": "Thước kẹp điện tử Mitutoyo Nhật Bản, độ chính xác cao 0.01mm",
+  "reviews": 189,
+  "description": "Thước cặp điện tử Mitutoyo Nhật Bản 0-150mm, độ chính xác 0.01mm, bảo hành 12 tháng",
   "specs": [
-    "Dải đo: 0-150mm",
-    "Độ chính xác: 0.01mm",
-    "Màn hình: LCD",
-    "Pin: CR2032",
-    "Xuất xứ: Nhật Bản"
+    "Dải đo: 0-150mm / 0-6in",
+    "Độ phân giải: 0.01mm / 0.0005in",
+    "Độ chính xác: ±0.02mm",
+    "Xuất xứ: Nhật Bản",
+    "Màn hình LCD điện tử",
+    "Bảo hành: 12 tháng chính hãng"
   ]
 }

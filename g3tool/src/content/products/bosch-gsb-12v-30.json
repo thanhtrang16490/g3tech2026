@@ -1,0 +1,21 @@
+{
+  "name": "Máy Khoan Động Lực Bosch GSB 12V-30",
+  "category": "industrial-tools",
+  "price": 2450000,
+  "originalPrice": 2950000,
+  "image": "/images/products/bosch-gsb-12v-30.jpg",
+  "badge": "Mới",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.8,
+  "reviews": 198,
+  "description": "Máy khoan động lực pin Bosch 12V 3 chế độ, thiết kế siêu gọn, lực xoắn 30Nm",
+  "specs": [
+    "Điện áp: 12V Lithium-ion",
+    "3 chế độ: Khoan/Khoan động lực/Bắt vít",
+    "Mô-men xoắn: 30 Nm (cứng)",
+    "Tốc độ: 0-420/0-1.600 vòng/phút",
+    "Trọng lượng: 0.9kg (không pin)",
+    "Bảo hành: 12 tháng chính hãng"
+  ]
+}

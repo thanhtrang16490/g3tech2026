@@ -1,0 +1,22 @@
+{
+  "name": "Nhựa In 3D PETG eSUN 1.75mm 1kg",
+  "category": "filament",
+  "price": 320000,
+  "originalPrice": 380000,
+  "image": "/images/products/petg-filament-esun.jpg",
+  "badge": "Kỹ thuật",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.7,
+  "reviews": 234,
+  "description": "Nhựa PETG eSUN 1.75mm, độ bền cơ học cao, chịu nhiệt tốt, phù hợp chi tiết kỹ thuật",
+  "specs": [
+    "Chất liệu: PETG",
+    "Đường kính: 1.75mm ±0.02mm",
+    "Trọng lượng: 1kg/cuộn",
+    "Nhiệt độ in: 220-260°C",
+    "Giường in: 60-80°C",
+    "Ưu điểm: Chịu lực, chịu nhiệt, không mùi",
+    "Bảo quản: Hút ẩm, tránh ánh nắng"
+  ]
+}

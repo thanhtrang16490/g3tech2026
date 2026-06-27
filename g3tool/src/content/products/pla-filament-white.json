@@ -1,20 +1,21 @@
 {
-  "name": "Filament PLA 1.75mm - Trắng",
+  "name": "Cuộn Nhựa In 3D PLA+ eSUN 1.75mm 1kg",
   "category": "filament",
   "price": 280000,
-  "originalPrice": null,
-  "image": "/images/products/pla-filament-white.jpg",
+  "originalPrice": 350000,
+  "image": "/images/products/pla-filament-esun.jpg",
   "badge": "Phổ biến",
   "newArrival": false,
   "featured": true,
-  "rating": 4.5,
-  "reviews": 312,
-  "description": "Cuộn filament PLA 1kg, đường kính 1.75mm, màu trắng",
+  "rating": 4.7,
+  "reviews": 456,
+  "description": "Nhựa in 3D PLA+ eSUN 1.75mm, độ bền cao, dễ in, tương thích mọi máy in 3D FDM",
   "specs": [
-    "Chất liệu: PLA",
-    "Đường kính: 1.75mm",
-    "Trọng lượng: 1kg",
-    "Nhiệt độ in: 190-220°C",
-    "Màu sắc: Trắng"
+    "Chất liệu: PLA+ (nâng cấp)",
+    "Đường kính: 1.75mm ±0.02mm",
+    "Trọng lượng: 1kg/cuộn",
+    "Nhiệt độ in: 190-230°C",
+    "Tương thích: Ender-3, CR-10, Prusa...",
+    "Bảo quản: Hút ẩm, tránh ánh nắng"
   ]
 }
