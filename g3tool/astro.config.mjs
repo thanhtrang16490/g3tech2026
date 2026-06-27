@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://g3tool.vn',
+  site: 'https://g3tool.com',
   integrations: [
     tailwind(),
     react(),
