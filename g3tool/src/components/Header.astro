@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import G3ToolLogo from './G3ToolLogo';
+import SearchModal from './SearchModal.astro';
 import { getCollection } from 'astro:content';
 
 // Load categories and featured products
@@ -328,9 +329,10 @@ const brandCategories = [
   });
 </script>
 
-<!-- Search Modal -->
+<!-- Search Modal - TEMPORARILY DISABLED
 <script>
   // Inject products for search modal
   window.__SEARCH_PRODUCTS__ = JSON.parse(JSON.stringify(Astro.props.products));
 </script>
 <SearchModal client:only />
+-->

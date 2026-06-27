@@ -322,5 +322,10 @@ const brandCategories = [
   });
 </script>
 
-<!-- Search Modal -->
-<SearchModal client:only products={products} />
+<!-- Search Modal - TEMPORARILY DISABLED
+<script>
+  // Inject products for search modal
+  window.__SEARCH_PRODUCTS__ = JSON.parse(JSON.stringify(Astro.props.products));
+</script>
+<SearchModal client:only />
+-->
