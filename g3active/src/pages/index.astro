@@ -10,7 +10,7 @@ const categoriesRaw = import.meta.glob('../content/categories/*.json', { eager: 
 
 // Convert to collection-like format
 const allProducts = Object.entries(productsRaw).map(([path, module]) => {
-  const id = path.split('/').pop().replace('.json', '');
+  const id = path.split('/').pop()?.replace('.json', '') ?? '';
   return {
     id,
     data: (module as any).default || module
@@ -18,7 +18,7 @@ const allProducts = Object.entries(productsRaw).map(([path, module]) => {
 });
 
 const allCategories = Object.entries(categoriesRaw).map(([path, module]) => {
-  const id = path.split('/').pop().replace('.json', '');
+  const id = path.split('/').pop()?.replace('.json', '') ?? '';
   return {
     id,
     data: (module as any).default || module

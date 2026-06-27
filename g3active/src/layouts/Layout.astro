@@ -4,6 +4,25 @@ import Footer from '../components/Footer.astro';
 import FloatingContact from '../components/FloatingContact.astro';
 import '../styles/global.css';
 
+// Extend Window interface for Google Analytics and Search
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  category?: string;
+  badge?: string;
+}
+
+declare global {
+  interface Window {
+    dataLayer: any[];
+    __SEARCH_PRODUCTS__: Product[];
+    openSearchModal: () => void;
+    closeSearchModal: () => void;
+  }
+}
+
 interface Props {
   title: string;
   description?: string;
@@ -304,7 +323,7 @@ const ogImage = image;
         const quickActions = document.querySelector('.p-4');
         const quickBtns = document.querySelectorAll('.search-quick-btn');
         
-        if (!input || !resultsList || !resultsItems || !resultsCount || !emptyState) return;
+        if (!input || !resultsList || !resultsItems || !resultsCount || !emptyState || !quickActions) return;
         
         let debounceTimer;
         let selectedIndex = -1;
