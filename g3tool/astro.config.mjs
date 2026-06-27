@@ -13,6 +13,7 @@ export default defineConfig({
   output: 'static',
   image: {
     domains: [
+      'g3tool.com',
       'makitavietnam.com',
       'makita.net',
       'makitatools.com',
@@ -39,6 +40,11 @@ export default defineConfig({
         protocol: 'https',
         hostname: 'mitutoyo.com.vn',
         pathname: '/wp-content/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'g3tool.com',
+        pathname: '/images/products/**',
       },
     ],
   },
