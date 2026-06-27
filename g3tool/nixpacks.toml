@@ -1,5 +1,5 @@
 [phases.setup]
-nixpkgs = ["nodejs_20"]
+nixpkgs = ["nodejs_22"]
 
 [phases.install]
 cmds = ["corepack enable && yarn install"]
