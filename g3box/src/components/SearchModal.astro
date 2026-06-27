@@ -1,25 +1,3 @@
----
-import { getCollection } from 'astro:content';
-
-// Load all products for client-side search
-const allProducts = await getCollection('products');
-const productsData = allProducts.map(p => ({
-  id: p.id,
-  name: p.data.name,
-  slug: p.id.replace('.json', ''),
-  price: p.data.price,
-  image: p.data.image,
-  badge: p.data.badge || '',
-  category: p.data.category || ''
-}));
-
-interface Props {
-  products: typeof productsData;
-}
-
-const { products: products } = Astro.props;
----
-
 <!-- Search Modal -->
 <div id="search-modal" class="fixed inset-0 z-[100] hidden" aria-modal="true" role="dialog">
   <!-- Backdrop -->
@@ -73,7 +51,8 @@ const { products: products } = Astro.props;
 </div>
 
 <script>
-  const products = JSON.parse(JSON.stringify(Astro.props.products));
+  // Products will be loaded from window.__SEARCH_PRODUCTS__
+  const products = (window as any).__SEARCH_PRODUCTS__ || [];
   
   let searchTimeout: NodeJS.Timeout;
   
