@@ -1,0 +1,20 @@
+{
+  "name": "Bộ Kit Arduino Starter",
+  "category": "diy-maker",
+  "price": 450000,
+  "originalPrice": 550000,
+  "image": "/images/products/arduino-starter-kit.jpg",
+  "badge": "Cho người mới",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.8,
+  "reviews": 178,
+  "description": "Bộ kit Arduino đầy đủ linh kiện cho người mới bắt đầu",
+  "specs": [
+    "1x Arduino Uno R3",
+    "Cảm biến: 15 loại",
+    "LED, điện trở, tụ điện",
+    "Breadboard và dây nối",
+    "Hướng dẫn chi tiết"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Máy In 3D Creality Ender-3 V3 SE",
+  "category": "3d-printers",
+  "price": 4500000,
+  "originalPrice": 5200000,
+  "image": "/images/products/ender-3-v3-se.jpg",
+  "badge": "Mới",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.6,
+  "reviews": 67,
+  "description": "Máy in 3D FDM tự động cân bằng, tốc độ cao 250mm/s",
+  "specs": [
+    "Công nghệ: FDM",
+    "Kích thước in: 220x220x250mm",
+    "Tốc độ tối đa: 250mm/s",
+    "Tự động cân bằng: CR-Touch",
+    "Màn hình: LCD"
+  ]
+}

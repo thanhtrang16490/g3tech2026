@@ -1,0 +1,22 @@
+{
+  "name": "Cảm Biến Hiện Diện Aqara FP300",
+  "category": "sensor",
+  "price": 1190000,
+  "originalPrice": 1990000,
+  "image": "/images/products/aqara-fp300.png",
+  "badge": null,
+  "rating": 5,
+  "reviews": 56,
+  "description": "Cảm biến hiện diện mmWave, phát hiện chuyển động nhỏ",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-fp300",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "mmWave",
+    "Zigbee",
+    "Khoảng 5m",
+    "Góc 180°"
+  ]
+}

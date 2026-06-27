@@ -1,0 +1,172 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getCollection } from 'astro:content';
+
+// Workaround: Use Astro.glob() to load JSON files directly
+const productsRaw = import.meta.glob('../../content/products/*.json', { eager: true });
+const categoriesRaw = import.meta.glob('../../content/categories/*.json', { eager: true });
+
+// Convert to collection-like format
+const allProducts = Object.entries(productsRaw).map(([path, module]) => {
+  const id = path.split('/').pop().replace('.json', '');
+  return {
+    id,
+    data: (module as any).default || module
+  };
+});
+
+const allCategories = Object.entries(categoriesRaw).map(([path, module]) => {
+  const id = path.split('/').pop().replace('.json', '');
+  return {
+    id,
+    data: (module as any).default || module
+  };
+});
+
+console.log('✅ Products page - Loaded products:', allProducts.length);
+console.log('✅ Categories:', allCategories.length);
+
+// Static-compatible URL parameter extraction
+const categorySlug = Astro.url.searchParams.get('category');
+
+// Find current category if filtering
+const currentCategory = categorySlug 
+  ? allCategories.find(c => c.data.slug === categorySlug)
+  : null;
+
+// Filter products by category if needed
+const filteredProducts = currentCategory
+  ? allProducts.filter(p => p.data.category === currentCategory.id)
+  : allProducts;
+---
+
+<Layout title={currentCategory ? currentCategory.data.name : 'Tất Cả Sản Phẩm - G3Tool'}>
+  <div class="bg-gray-50 py-8">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <div class="flex items-center space-x-2 text-sm text-gray-600 mb-6">
+        <a href="/" class="hover:text-blue-600">Trang chủ</a>
+        <span>/</span>
+        <span class="text-gray-900 font-semibold">
+          {currentCategory ? currentCategory.data.name : 'Tất cả sản phẩm'}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <!-- Sidebar -->
+        <aside class="lg:col-span-1">
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden sticky top-24">
+            <!-- Sidebar Header -->
+            <div class="bg-gradient-to-r from-red-600 to-orange-600 px-5 py-4">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                Danh mục sản phẩm
+              </h3>
+            </div>
+            
+            <!-- Category List -->
+            <div class="p-3">
+              <!-- All Products Link -->
+              <a 
+                href="/products"
+                class={`flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all group ${
+                  !categorySlug 
+                    ? 'bg-gradient-to-r from-red-50 to-orange-50 text-red-600 font-semibold shadow-sm' 
+                    : 'hover:bg-gray-50 text-gray-700'
+                }`}
+              >
+                <svg class={`w-5 h-5 flex-shrink-0 ${!categorySlug ? 'text-red-600' : 'text-gray-400 group-hover:text-red-600'}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                </svg>
+                <div class="flex-1 min-w-0">
+                  <div class="font-semibold text-sm truncate">Tất cả sản phẩm</div>
+                  <div class={`text-xs ${!categorySlug ? 'text-red-500' : 'text-gray-500'}`}>{allProducts.length} sản phẩm</div>
+                </div>
+                {!categorySlug && (
+                  <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                  </svg>
+                )}
+              </a>
+              
+              <!-- Category Items -->
+              {allCategories.sort((a, b) => a.data.order - b.data.order).map(category => {
+                const productCount = allProducts.filter(p => p.data.category === category.id).length;
+                const isActive = categorySlug === category.data.slug;
+                
+                return (
+                  <a 
+                    href={`/products?category=${category.data.slug}`}
+                    class={`flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all group ${
+                      isActive 
+                        ? 'bg-gradient-to-r from-red-50 to-orange-50 text-red-600 font-semibold shadow-sm' 
+                        : 'hover:bg-gray-50 text-gray-700'
+                    }`}
+                  >
+                    <span class={`text-2xl flex-shrink-0 ${isActive ? 'scale-110' : 'group-hover:scale-110'} transition-transform`}>{category.data.icon}</span>
+                    <div class="flex-1 min-w-0">
+                      <div class="font-semibold text-sm truncate">{category.data.name}</div>
+                      <div class={`text-xs ${isActive ? 'text-red-500' : 'text-gray-500'}`}>{productCount} sản phẩm</div>
+                    </div>
+                    {isActive && (
+                      <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="lg:col-span-4">
+          <!-- Page Header -->
+          <div class="bg-gradient-to-r from-red-600 via-red-500 to-orange-600 rounded-xl shadow-lg p-6 lg:p-8 mb-6 text-white">
+            <div class="flex items-center justify-between">
+              <div>
+                <h1 class="text-2xl lg:text-3xl font-extrabold mb-2 flex items-center gap-3">
+                  {currentCategory && <span class="text-4xl">{currentCategory.data.icon}</span>}
+                  {currentCategory ? currentCategory.data.name : 'Tất Cả Sản Phẩm'}
+                </h1>
+                <p class="text-white/90 text-sm lg:text-base">
+                  {filteredProducts.length} sản phẩm
+                  {currentCategory && ` - ${currentCategory.data.description}`}
+                </p>
+              </div>
+              {currentCategory && (
+                <a 
+                  href="/products"
+                  class="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-lg font-semibold text-sm transition-all flex items-center gap-2"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  Xem tất cả
+                </a>
+              )}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            {filteredProducts.map(product => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+
+          {filteredProducts.length === 0 && (
+            <div class="bg-white rounded-lg shadow-md p-12 text-center">
+              <div class="text-6xl mb-4">📦</div>
+              <h3 class="text-xl font-bold mb-2">Chưa có sản phẩm</h3>
+              <p class="text-gray-600">Danh mục này sẽ sớm có sản phẩm mới</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

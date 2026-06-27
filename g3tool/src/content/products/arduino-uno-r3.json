@@ -1,0 +1,20 @@
+{
+  "name": "Arduino Uno R3 Chính Hãng",
+  "category": "electronics-iot",
+  "price": 145000,
+  "originalPrice": 180000,
+  "image": "/images/products/arduino-uno-r3.jpg",
+  "badge": "Giá tốt",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.7,
+  "reviews": 234,
+  "description": "Board Arduino Uno R3 ATmega328P chính hãng Italy",
+  "specs": [
+    "Vi điều khiển: ATmega328P",
+    "Điện áp hoạt động: 5V",
+    "Digital I/O: 14 pins",
+    "Analog Input: 6 pins",
+    "USB: Type B"
+  ]
+}

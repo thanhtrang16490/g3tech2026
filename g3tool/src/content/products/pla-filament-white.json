@@ -1,0 +1,20 @@
+{
+  "name": "Filament PLA 1.75mm - Trắng",
+  "category": "filament",
+  "price": 280000,
+  "originalPrice": null,
+  "image": "/images/products/pla-filament-white.jpg",
+  "badge": "Phổ biến",
+  "newArrival": false,
+  "featured": true,
+  "rating": 4.5,
+  "reviews": 312,
+  "description": "Cuộn filament PLA 1kg, đường kính 1.75mm, màu trắng",
+  "specs": [
+    "Chất liệu: PLA",
+    "Đường kính: 1.75mm",
+    "Trọng lượng: 1kg",
+    "Nhiệt độ in: 190-220°C",
+    "Màu sắc: Trắng"
+  ]
+}

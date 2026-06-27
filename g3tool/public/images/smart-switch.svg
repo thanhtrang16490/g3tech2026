@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#f8fafc"/>
+  
+  <!-- Switch panel -->
+  <rect x="120" y="100" width="160" height="200" rx="20" fill="#1e293b" stroke="#334155" stroke-width="4"/>
+  <rect x="130" y="110" width="140" height="180" rx="15" fill="#f8fafc"/>
+  
+  <!-- Touch buttons -->
+  <circle cx="200" cy="160" r="35" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+  <circle cx="200" cy="160" r="25" fill="#3b82f6" opacity="0.2"/>
+  <circle cx="200" cy="160" r="15" fill="#3b82f6"/>
+  
+  <circle cx="200" cy="240" r="35" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+  <circle cx="200" cy="240" r="25" fill="#f59e0b" opacity="0.2"/>
+  <circle cx="200" cy="240" r="15" fill="#f59e0b"/>
+  
+  <!-- LED indicators -->
+  <circle cx="200" cy="160" r="3" fill="#10b981"/>
+  <circle cx="200" cy="240" r="3" fill="#10b981"/>
+  
+  <!-- Brand text -->
+  <text x="200" y="340" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b" text-anchor="middle">Smart Switch</text>
+  <text x="200" y="365" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Aqara H1</text>
+</svg>

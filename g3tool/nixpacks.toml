@@ -1,0 +1,11 @@
+[phases.setup]
+nixpkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["yarn install"]
+
+[phases.build]
+cmds = ["yarn build"]
+
+[start]
+cmd = "serve dist -p 3000 -s"
