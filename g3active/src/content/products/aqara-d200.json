@@ -1,0 +1,22 @@
+{
+  "name": "Khóa Cửa Thông Minh Aqara D200",
+  "category": "smart-lock",
+  "price": 4990000,
+  "originalPrice": 6490000,
+  "image": "/images/products/aqara-d200.png",
+  "badge": "Cao cấp",
+  "rating": 5,
+  "reviews": 178,
+  "description": "Khóa cửa vân tay + mật khẩu + thẻ NFC + chìa khóa, bảo mật cao cấp",
+  "featured": true,
+  "hotDeal": false,
+  "newArrival": true,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-d200",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Vân tay semiconductor chống giả",
+    "Mật khẩu ảo chống nhìn trộm",
+    "Thẻ NFC và chìa khóa dự phòng",
+    "Kết nối Zigbee, WiFi gateway"
+  ]
+}

@@ -1,0 +1,169 @@
+---
+// Search Bar Component with Autocomplete
+import { getCollection } from 'astro:content';
+
+// Load products for search
+const allProducts = await getCollection('products');
+const productData = allProducts.map(p => ({
+  id: p.id,
+  name: p.data.name,
+  price: p.data.price,
+  image: p.data.image,
+  category: p.data.category,
+  badge: p.data.badge
+}));
+---
+
+<!-- Search Bar Section -->
+<section class="py-6 bg-white border-b border-gray-200 sticky top-16 z-40 shadow-sm">
+  <div class="container">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative" id="search-container">
+        <div class="flex gap-2">
+          <div class="flex-1 relative">
+            <input 
+              type="text" 
+              id="search-input"
+              placeholder="Tìm kiếm sản phẩm: khóa thông minh, camera, công tắc..." 
+              class="w-full border-2 border-gray-300 focus:border-red-500 focus:ring-4 focus:ring-red-100 rounded-xl px-5 py-3.5 text-base outline-none transition-all"
+              autocomplete="off"
+            />
+            <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+          <button 
+            id="search-button"
+            class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-8 py-3.5 rounded-xl font-bold transition-all hover:scale-105 flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <span class="hidden sm:inline">Tìm kiếm</span>
+          </button>
+        </div>
+        
+        <!-- Autocomplete Dropdown -->
+        <div id="search-results" class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 max-h-96 overflow-y-auto hidden z-50">
+          <div class="p-2">
+            <div class="text-xs text-gray-500 px-3 py-2 uppercase font-semibold" id="search-results-count"></div>
+            <div id="search-results-list"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Popular Searches -->
+      <div class="flex flex-wrap items-center gap-2 mt-3 text-sm">
+        <span class="text-gray-500 font-medium">Phổ biến:</span>
+        <button class="search-tag px-3 py-1 bg-gray-100 hover:bg-red-50 text-gray-700 hover:text-red-600 rounded-full transition-colors" data-query="Aqara">Aqara</button>
+        <button class="search-tag px-3 py-1 bg-gray-100 hover:bg-red-50 text-gray-700 hover:text-red-600 rounded-full transition-colors" data-query="Camera">Camera</button>
+        <button class="search-tag px-3 py-1 bg-gray-100 hover:bg-red-50 text-gray-700 hover:text-red-600 rounded-full transition-colors" data-query="Khóa thông minh">Khóa thông minh</button>
+        <button class="search-tag px-3 py-1 bg-gray-100 hover:bg-red-50 text-gray-700 hover:text-red-600 rounded-full transition-colors" data-query="Công tắc">Công tắc</button>
+        <button class="search-tag px-3 py-1 bg-gray-100 hover:bg-red-50 text-gray-700 hover:text-red-600 rounded-full transition-colors" data-query="Cảm biến">Cảm biến</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Product data injected from Astro
+  const allProductsData = {JSON.stringify(productData)};
+  
+  // Search functionality
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const searchResultsList = document.getElementById('search-results-list');
+  const searchResultsCount = document.getElementById('search-results-count');
+  const searchButton = document.getElementById('search-button');
+  const searchTags = document.querySelectorAll('.search-tag');
+  
+  let debounceTimer;
+  
+  function performSearch(query) {
+    if (!query || query.length < 2) {
+      searchResults.classList.add('hidden');
+      return;
+    }
+    
+    const searchTerm = query.toLowerCase().trim();
+    const filtered = allProductsData.filter(product => 
+      product.name.toLowerCase().includes(searchTerm) ||
+      (product.category && product.category.toLowerCase().includes(searchTerm))
+    ).slice(0, 8);
+    
+    if (filtered.length === 0) {
+      searchResultsCount.textContent = 'Không tìm thấy kết quả';
+      searchResultsList.innerHTML = '<div class="px-3 py-4 text-center text-gray-500">Thử tìm với từ khóa khác</div>';
+      searchResults.classList.remove('hidden');
+      return;
+    }
+    
+    searchResultsCount.textContent = `Tìm thấy ${filtered.length} sản phẩm`;
+    
+    searchResultsList.innerHTML = filtered.map(product => {
+      const priceFormatted = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price);
+      return `<a href="/products/${product.id}" class="flex items-center gap-3 p-3 hover:bg-red-50 rounded-lg transition-colors group">
+        <div class="flex-1 min-w-0">
+          <div class="font-semibold text-sm text-gray-800 group-hover:text-red-600 truncate">${product.name}</div>
+          <div class="text-red-600 font-bold text-sm">${priceFormatted}</div>
+        </div>
+        ${product.badge ? `<span class="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-semibold">${product.badge}</span>` : ''}
+      </a>`;
+    }).join('');
+    
+    searchResults.classList.remove('hidden');
+  }
+  
+  searchInput.addEventListener('input', function(e) {
+    clearTimeout(debounceTimer);
+    const query = e.target.value;
+    
+    debounceTimer = setTimeout(function() {
+      performSearch(query);
+    }, 300);
+  });
+  
+  searchInput.addEventListener('focus', function() {
+    if (searchInput.value.length >= 2) {
+      performSearch(searchInput.value);
+    }
+  });
+  
+  document.addEventListener('click', function(e) {
+    const container = document.getElementById('search-container');
+    if (container && !container.contains(e.target)) {
+      searchResults.classList.add('hidden');
+    }
+  });
+  
+  if (searchButton) {
+    searchButton.addEventListener('click', function() {
+      const query = searchInput.value.trim();
+      if (query) {
+        window.location.href = `/products?search=${encodeURIComponent(query)}`;
+      }
+    });
+  }
+  
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = searchInput.value.trim();
+      if (query) {
+        window.location.href = `/products?search=${encodeURIComponent(query)}`;
+      }
+    }
+  });
+  
+  searchTags.forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      const query = tag.getAttribute('data-query');
+      if (query) {
+        searchInput.value = query;
+        performSearch(query);
+        searchInput.focus();
+      }
+    });
+  });
+</script>

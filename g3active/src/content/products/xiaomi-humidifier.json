@@ -1,0 +1,22 @@
+{
+  "name": "Máy Phun Sóng Ẩm Xiaomi Smart Humidifier",
+  "category": "home-appliance",
+  "price": 790000,
+  "originalPrice": 990000,
+  "image": "/images/xiaomi-humidifier.svg",
+  "badge": "Tiện ích",
+  "rating": 5,
+  "reviews": 134,
+  "description": "Máy tạo độ ẩm thông minh, dung tích 4L, điều khiển qua Mi Home",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": true,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/xiaomi-humidifier",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Dung tích bình 4L",
+    "Phun sương siêu mịn",
+    "Cảm biến độ ẩm tự động",
+    "Chế độ ngủ siêu êm"
+  ]
+}

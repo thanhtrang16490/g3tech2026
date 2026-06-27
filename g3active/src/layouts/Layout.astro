@@ -1,0 +1,434 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingContact from '../components/FloatingContact.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  structuredData?: any;
+}
+
+const { title, description = 'G3BOX - Công Ty Cổ phần Công nghệ G3 Việt Nam. Chuyên cung cấp thiết bị nhà thông minh chính hãng Aqara, Xiaomi, EZVIZ. Showroom tại Hưng Yên. Tư vấn miễn phí: 094 777 6662', image = '/og-image.jpg', canonicalUrl, structuredData } = Astro.props;
+
+// Generate canonical URL
+const canonicalURL = canonicalUrl || Astro.url;
+
+// Default OG image
+const ogImage = image;
+---
+
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="nhà thông minh, smart home, aqara, xiaomi, ezviz, thiết bị thông minh, khóa cửa thông minh, công tắc thông minh, camera an ninh, g3box" />
+    <meta name="author" content="G3BOX - Công Ty Cổ phần Công nghệ G3 Việt Nam" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Geo Meta Tags for Local SEO -->
+    <meta name="geo.region" content="VN-HN" />
+    <meta name="geo.placename" content="Hưng Yên" />
+    <meta name="geo.position" content="20.8528;106.0161" />
+    <meta name="ICBM" content="20.8528, 106.0161" />
+    
+    <!-- Hreflang for Vietnamese -->
+    <link rel="alternate" hreflang="vi" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="G3BOX - Thiết bị nhà thông minh chính hãng" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:site_name" content="G3BOX" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="G3BOX - Smart Home Devices" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#DC2626" />
+    <meta name="msapplication-TileColor" content="#DC2626" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    
+    <!-- Floating Contact Buttons (Zalo + Phone) -->
+    <FloatingContact />
+    
+    <!-- Structured Data (JSON-LD) -->
+    {structuredData && Array.isArray(structuredData) && structuredData.map((data) => (
+      <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))}
+    {structuredData && !Array.isArray(structuredData) && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
+    
+    {/* macOS-style Lightbox Search Modal */}
+    <div id="search-modal" class="fixed inset-0 z-[100] hidden">
+      <!-- Backdrop with blur -->
+      <div 
+        id="search-backdrop"
+        class="absolute inset-0 bg-black/60 backdrop-blur-xl transition-opacity duration-300 opacity-0"
+        onclick="closeSearchModal()"
+      ></div>
+      
+      <!-- Search Container -->
+      <div class="relative z-10 flex items-start justify-center pt-[15vh] px-4">
+        <div 
+          id="search-container"
+          class="w-full max-w-3xl bg-white rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-300 overflow-hidden"
+        >
+          <!-- Search Input Area -->
+          <div class="border-b border-gray-200">
+            <div class="flex items-center gap-3 px-6 py-5">
+              <svg class="w-6 h-6 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input 
+                type="text" 
+                id="search-input-modal"
+                placeholder="Tìm kiếm sản phẩm..." 
+                class="flex-1 text-lg outline-none text-gray-900 placeholder-gray-400 bg-transparent"
+                autocomplete="off"
+              />
+              <button 
+                id="search-close-btn"
+                class="text-gray-400 hover:text-gray-600 p-1 rounded hover:bg-gray-100 transition-colors"
+                onclick="closeSearchModal()"
+                aria-label="Đóng tìm kiếm"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Search Results Area -->
+          <div id="search-results-modal" class="max-h-[60vh] overflow-y-auto">
+            <!-- Quick Actions -->
+            <div class="p-4 border-b border-gray-100">
+              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3 px-2">Tìm kiếm nhanh</div>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="search-quick-btn flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-left" data-query="Aqara">
+                  <span class="text-xl">🏠</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">Aqara</div>
+                    <div class="text-xs text-gray-500">Thiết bị nhà thông minh</div>
+                  </div>
+                </button>
+                <button class="search-quick-btn flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-left" data-query="Camera">
+                  <span class="text-xl">📹</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">Camera</div>
+                    <div class="text-xs text-gray-500">Giám sát an ninh</div>
+                  </div>
+                </button>
+                <button class="search-quick-btn flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-left" data-query="Khóa">
+                  <span class="text-xl">🔐</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">Khóa thông minh</div>
+                    <div class="text-xs text-gray-500">Bảo vệ an toàn</div>
+                  </div>
+                </button>
+                <button class="search-quick-btn flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-gray-50 transition-colors text-left" data-query="Công tắc">
+                  <span class="text-xl">💡</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">Công tắc</div>
+                    <div class="text-xs text-gray-500">Điều khiển đèn</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Results List -->
+            <div id="search-results-list" class="hidden">
+              <div class="px-4 py-2 border-b border-gray-100">
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide" id="search-results-count"></div>
+              </div>
+              <div id="search-results-items"></div>
+            </div>
+            
+            <!-- Empty State -->
+            <div id="search-empty-state" class="hidden py-12 text-center">
+              <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="text-gray-500 text-sm">Không tìm thấy kết quả</p>
+              <p class="text-gray-400 text-xs mt-1">Thử tìm với từ khóa khác</p>
+            </div>
+          </div>
+          
+          <!-- Footer with shortcuts -->
+          <div class="border-t border-gray-200 px-6 py-3 bg-gray-50">
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <div class="flex items-center gap-4">
+                <div class="flex items-center gap-1.5">
+                  <kbd class="px-2 py-1 bg-white border border-gray-300 rounded text-[10px] font-mono">↑↓</kbd>
+                  <span>Chọn</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <kbd class="px-2 py-1 bg-white border border-gray-300 rounded text-[10px] font-mono">↵</kbd>
+                  <span>Mở</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <kbd class="px-2 py-1 bg-white border border-gray-300 rounded text-[10px] font-mono">esc</kbd>
+                <span>Đóng</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/* Back to Top Button */}
+    <button 
+      id="back-to-top"
+      class="fixed bottom-8 right-8 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 invisible translate-y-4 z-50 hover:scale-110"
+      aria-label="Lên đầu trang"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+    
+    <script>
+      // Product data for search (will be injected from pages)
+      window.__SEARCH_PRODUCTS__ = window.__SEARCH_PRODUCTS__ || [];
+      
+      // Search Modal Functions
+      window.openSearchModal = function() {
+        const modal = document.getElementById('search-modal');
+        const backdrop = document.getElementById('search-backdrop');
+        const container = document.getElementById('search-container');
+        const input = document.getElementById('search-input-modal');
+        
+        if (!modal || !backdrop || !container || !input) return;
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Animate in
+        requestAnimationFrame(() => {
+          backdrop.classList.remove('opacity-0');
+          container.classList.remove('scale-95', 'opacity-0');
+          container.classList.add('scale-100', 'opacity-100');
+          input.focus();
+        });
+      };
+      
+      window.closeSearchModal = function() {
+        const modal = document.getElementById('search-modal');
+        const backdrop = document.getElementById('search-backdrop');
+        const container = document.getElementById('search-container');
+        const input = document.getElementById('search-input-modal');
+        
+        if (!modal || !backdrop || !container) return;
+        
+        // Animate out
+        backdrop.classList.add('opacity-0');
+        container.classList.remove('scale-100', 'opacity-100');
+        container.classList.add('scale-95', 'opacity-0');
+        
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+          if (input) input.value = '';
+          // Reset to quick actions
+          const quickActions = modal.querySelector('.p-4');
+          const resultsList = document.getElementById('search-results-list');
+          const emptyState = document.getElementById('search-empty-state');
+          if (quickActions) quickActions.style.display = '';
+          if (resultsList) resultsList.classList.add('hidden');
+          if (emptyState) emptyState.classList.add('hidden');
+        }, 300);
+      };
+      
+      // Search functionality
+      function initSearch() {
+        const input = document.getElementById('search-input-modal');
+        const resultsList = document.getElementById('search-results-list');
+        const resultsItems = document.getElementById('search-results-items');
+        const resultsCount = document.getElementById('search-results-count');
+        const emptyState = document.getElementById('search-empty-state');
+        const quickActions = document.querySelector('.p-4');
+        const quickBtns = document.querySelectorAll('.search-quick-btn');
+        
+        if (!input || !resultsList || !resultsItems || !resultsCount || !emptyState) return;
+        
+        let debounceTimer;
+        let selectedIndex = -1;
+        
+        function performSearch(query) {
+          if (!query || query.length < 2) {
+            // Show quick actions
+            if (quickActions) quickActions.style.display = '';
+            resultsList.classList.add('hidden');
+            emptyState.classList.add('hidden');
+            return;
+          }
+          
+          const products = window.__SEARCH_PRODUCTS__ || [];
+          const searchTerm = query.toLowerCase().trim();
+          const filtered = products.filter(product => 
+            product.name.toLowerCase().includes(searchTerm) ||
+            (product.category && product.category.toLowerCase().includes(searchTerm))
+          ).slice(0, 8);
+          
+          if (filtered.length === 0) {
+            // Show empty state
+            if (quickActions) quickActions.style.display = 'none';
+            resultsList.classList.add('hidden');
+            emptyState.classList.remove('hidden');
+            return;
+          }
+          
+          // Show results
+          if (quickActions) quickActions.style.display = 'none';
+          emptyState.classList.add('hidden');
+          resultsList.classList.remove('hidden');
+          
+          resultsCount.textContent = `Tìm thấy ${filtered.length} sản phẩm`;
+          
+          resultsItems.innerHTML = filtered.map((product, index) => {
+            const priceFormatted = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price);
+            return `<a href="/products/${product.id}" class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors group ${index === selectedIndex ? 'bg-red-50 border-l-4 border-red-600' : ''}" data-index="${index}">
+              <img src="${product.image}" alt="${product.name}" class="w-14 h-14 object-cover rounded-lg bg-gray-100 flex-shrink-0" />
+              <div class="flex-1 min-w-0">
+                <div class="font-semibold text-sm text-gray-900 group-hover:text-red-600 truncate">${product.name}</div>
+                <div class="text-xs text-gray-500">${product.category || ''}</div>
+                <div class="text-red-600 font-bold text-sm mt-1">${priceFormatted}</div>
+              </div>
+              ${product.badge ? `<span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs font-semibold flex-shrink-0">${product.badge}</span>` : ''}
+              <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>`;
+          }).join('');
+          
+          selectedIndex = -1;
+        }
+        
+        // Input event with debounce
+        input.addEventListener('input', function(e) {
+          clearTimeout(debounceTimer);
+          const query = e.target.value;
+          
+          debounceTimer = setTimeout(function() {
+            performSearch(query);
+          }, 200);
+        });
+        
+        // Quick button clicks
+        quickBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            const query = btn.getAttribute('data-query');
+            if (query) {
+              input.value = query;
+              performSearch(query);
+              input.focus();
+            }
+          });
+        });
+        
+        // Keyboard navigation
+        input.addEventListener('keydown', function(e) {
+          const items = resultsItems.querySelectorAll('a[data-index]');
+          
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+            updateSelected(items);
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            selectedIndex = Math.max(selectedIndex - 1, 0);
+            updateSelected(items);
+          } else if (e.key === 'Enter' && selectedIndex >= 0) {
+            e.preventDefault();
+            const selected = items[selectedIndex];
+            if (selected) selected.click();
+          }
+        });
+        
+        function updateSelected(items) {
+          items.forEach(function(item, index) {
+            if (index === selectedIndex) {
+              item.classList.add('bg-red-50', 'border-l-4', 'border-red-600');
+            } else {
+              item.classList.remove('bg-red-50', 'border-l-4', 'border-red-600');
+            }
+          });
+        }
+        
+        // ESC to close
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            const modal = document.getElementById('search-modal');
+            if (modal && !modal.classList.contains('hidden')) {
+              closeSearchModal();
+            }
+          }
+        });
+      }
+      
+      // Initialize search
+      initSearch();
+      
+      // Show/hide back to top button based on scroll position
+      const backToTopButton = document.getElementById('back-to-top');
+      
+      if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 500) {
+            backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+            backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
+          } else {
+            backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
+            backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

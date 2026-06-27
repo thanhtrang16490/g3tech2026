@@ -78,9 +78,9 @@ function getDiscount(original: number, current: number): number {
     
     {/* Wishlist Button */}
     <button 
-      class="absolute top-2 right-2 bg-white hover:bg-red-50 text-gray-600 hover:text-red-600 w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-10 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+      class="absolute top-2 right-2 bg-white hover:bg-yellow-50 text-gray-600 hover:text-yellow-600 w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-10 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
       aria-label="Thêm vào yêu thích"
-      onclick="this.classList.toggle('text-red-600'); this.classList.toggle('bg-red-50');"
+      onclick="this.classList.toggle('text-yellow-600'); this.classList.toggle('bg-red-50');"
       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ function getDiscount(original: number, current: number): number {
     {/* Badges */}
     <div class="absolute top-2 left-2 flex flex-col gap-2">
       {productBadge && (
-        <div class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+        <div class="bg-yellow-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
           {productBadge}
         </div>
       )}
@@ -115,7 +115,7 @@ function getDiscount(original: number, current: number): number {
     {/* Quick Add to Cart Button (Hover) */}
     <div class="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
       <button 
-        class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-4 py-2 rounded-lg font-semibold shadow-lg flex items-center gap-2 text-sm"
+        class="bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-red-700 hover:to-orange-700 text-white px-4 py-2 rounded-lg font-semibold shadow-lg flex items-center gap-2 text-sm"
         onclick="window.location.href='https://zalo.me/0947776662?text=Tôi muốn mua: {productName}'"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,11 +133,11 @@ function getDiscount(original: number, current: number): number {
         <div class="flex-1 bg-gray-200 rounded-full h-1.5 overflow-hidden">
           <div class="bg-gradient-to-r from-orange-500 to-red-600 h-full rounded-full" style="width: 0%" data-stock-bar></div>
         </div>
-        <span class="text-xs text-red-600 font-semibold whitespace-nowrap">Sắp hết hàng!</span>
+        <span class="text-xs text-yellow-600 font-semibold whitespace-nowrap">Sắp hết hàng!</span>
       </div>
     </div>
     
-    <a href={`/products/${productId}`} class="block group-hover:text-red-600 transition-colors">
+    <a href={`/products/${productId}`} class="block group-hover:text-yellow-600 transition-colors">
       <h3 class="font-semibold text-lg mb-2 line-clamp-2 min-h-[3rem]">{productName}</h3>
     </a>
     
@@ -158,7 +158,7 @@ function getDiscount(original: number, current: number): number {
     
     {/* Price */}
     <div class="flex items-center space-x-2 mb-3">
-      <span class="text-red-600 font-bold text-xl">{formatPrice(productPrice)}</span>
+      <span class="text-yellow-600 font-bold text-xl">{formatPrice(productPrice)}</span>
       {productOriginalPrice && (
         <span class="text-gray-400 line-through text-sm">{formatPrice(productOriginalPrice)}</span>
       )}

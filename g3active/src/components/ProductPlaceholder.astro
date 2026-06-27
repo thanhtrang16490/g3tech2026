@@ -1,0 +1,141 @@
+---
+/**
+ * Enhanced Product Placeholder SVG
+ * Generates beautiful gradient placeholders with product icons
+ * 
+ * Usage: <ProductPlaceholder name="Product Name" category="smart-lock" />
+ */
+
+interface Props {
+  name: string;
+  category?: string;
+  size?: number;
+}
+
+const { 
+  name, 
+  category = 'default',
+  size = 400 
+} = Astro.props;
+
+// Category-based icons and colors
+const categoryStyles: Record<string, { gradient: string; icon: string; color: string }> = {
+  'central-control': {
+    gradient: 'from-blue-500 to-blue-600',
+    icon: '🎛️',
+    color: '#3B82F6'
+  },
+  'smart-switch': {
+    gradient: 'from-green-500 to-green-600',
+    icon: '🔘',
+    color: '#10B981'
+  },
+  'smart-light': {
+    gradient: 'from-yellow-500 to-orange-500',
+    icon: '💡',
+    color: '#F59E0B'
+  },
+  'smart-lock': {
+    gradient: 'from-purple-500 to-purple-600',
+    icon: '🔐',
+    color: '#8B5CF6'
+  },
+  'sensor': {
+    gradient: 'from-cyan-500 to-cyan-600',
+    icon: '📡',
+    color: '#06B6D4'
+  },
+  'camera': {
+    gradient: 'from-red-500 to-red-600',
+    icon: '📹',
+    color: '#EF4444'
+  },
+  'smart-curtain': {
+    gradient: 'from-indigo-500 to-indigo-600',
+    icon: '🪟',
+    color: '#6366F1'
+  },
+  'smart-speaker': {
+    gradient: 'from-pink-500 to-pink-600',
+    icon: '🔊',
+    color: '#EC4899'
+  },
+  'home-appliance': {
+    gradient: 'from-teal-500 to-teal-600',
+    icon: '🏡',
+    color: '#14B8A6'
+  },
+  'default': {
+    gradient: 'from-gray-500 to-gray-600',
+    icon: '📦',
+    color: '#6B7280'
+  }
+};
+
+const style = categoryStyles[category] || categoryStyles['default'];
+---
+
+<svg 
+  width={size} 
+  height={size} 
+  viewBox="0 0 {size} {size}" 
+  xmlns="http://www.w3.org/2000/svg"
+  class="w-full h-full"
+>
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg-{category}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:{style.color};stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:{style.color};stop-opacity:0.2" />
+    </linearGradient>
+    <filter id="shadow-{category}">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bg-{category})" />
+  
+  <!-- Center Icon -->
+  <text 
+    x="50%" 
+    y="45%" 
+    text-anchor="middle" 
+    font-size="{size * 0.25}"
+    filter="url(#shadow-{category})"
+  >
+    {style.icon}
+  </text>
+  
+  <!-- Product Name -->
+  <text 
+    x="50%" 
+    y="65%" 
+    text-anchor="middle" 
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="{size * 0.04}"
+    font-weight="600"
+    fill="{style.color}"
+  >
+    {name.length > 30 ? name.substring(0, 30) + '...' : name}
+  </text>
+  
+  <!-- Category Label -->
+  <text 
+    x="50%" 
+    y="72%" 
+    text-anchor="middle" 
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="{size * 0.03}"
+    font-weight="400"
+    fill="#9CA3AF"
+  >
+    {category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+  </text>
+  
+  <!-- Decorative Corner Accents -->
+  <path d="M 20 40 L 20 20 L 40 20" fill="none" stroke="{style.color}" stroke-width="2" opacity="0.3"/>
+  <path d="M {size - 20} 40 L {size - 20} 20 L {size - 40} 20" fill="none" stroke="{style.color}" stroke-width="2" opacity="0.3"/>
+  <path d="M 20 {size - 40} L 20 {size - 20} L 40 {size - 20}" fill="none" stroke="{style.color}" stroke-width="2" opacity="0.3"/>
+  <path d="M {size - 20} {size - 40} L {size - 20} {size - 20} L {size - 40} {size - 20}" fill="none" stroke="{style.color}" stroke-width="2" opacity="0.3"/>
+</svg>

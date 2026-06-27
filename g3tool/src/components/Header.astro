@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import G3BoxLogo from './G3BoxLogo';
+import G3ToolLogo from './G3ToolLogo';
 import { getCollection } from 'astro:content';
 
 // Load categories and featured products
@@ -82,7 +82,7 @@ const brandCategories = [
     <div class="flex items-center justify-between py-1">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3 group">
-        <G3BoxLogo client:load size="md" />
+        <G3ToolLogo client:load size="md" />
         <div class="hidden lg:block">
           <div class="text-sm font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Dụng Cụ Công Nghiệp Thiết Bị Công Cụ Nhà Thông Minh Maker Maker</div>
           <div class="text-xs text-gray-600 font-medium">Chính hãng • Giá tốt • Bảo hành 24T</div>
@@ -95,8 +95,8 @@ const brandCategories = [
           <div class="relative group">
             <a 
               href={item.href}
-              class={`relative px-4 py-2.5 text-gray-700 hover:text-red-600 font-medium transition-all duration-300 rounded-lg overflow-hidden whitespace-nowrap ${
-                index === 0 ? 'bg-gradient-to-r from-red-50 to-orange-50 text-red-600 font-semibold' : ''
+              class={`relative px-4 py-2.5 text-gray-700 hover:text-yellow-600 font-medium transition-all duration-300 rounded-lg overflow-hidden whitespace-nowrap ${
+                index === 0 ? 'bg-gradient-to-r from-red-50 to-orange-50 text-yellow-600 font-semibold' : ''
               }`}
             >
               <span class="relative z-10">{item.name}</span>
@@ -122,7 +122,7 @@ const brandCategories = [
                             class="group/brand flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all"
                           >
                             <span class="text-2xl">{brand.icon}</span>
-                            <span class="font-semibold text-sm text-gray-800 group-hover/brand:text-red-600 transition-colors">{brand.name}</span>
+                            <span class="font-semibold text-sm text-gray-800 group-hover/brand:text-yellow-600 transition-colors">{brand.name}</span>
                           </a>
                         ))}
                       </div>
@@ -147,7 +147,7 @@ const brandCategories = [
                                 {meta.icon}
                               </div>
                               <div class="flex-1 min-w-0">
-                                <div class="font-semibold text-sm text-gray-800 group-hover/item:text-red-600 transition-colors truncate">{category.data.name}</div>
+                                <div class="font-semibold text-sm text-gray-800 group-hover/item:text-yellow-600 transition-colors truncate">{category.data.name}</div>
                                 <div class="text-xs text-gray-500">{productCount} sản phẩm</div>
                               </div>
                             </a>
@@ -176,8 +176,8 @@ const brandCategories = [
                                 loading="lazy"
                               />
                             </div>
-                            <div class="font-semibold text-xs text-gray-800 group-hover/item:text-red-600 transition-colors line-clamp-1">{product.data.name}</div>
-                            <div class="text-red-600 font-bold text-sm">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.data.price)}</div>
+                            <div class="font-semibold text-xs text-gray-800 group-hover/item:text-yellow-600 transition-colors line-clamp-1">{product.data.name}</div>
+                            <div class="text-yellow-600 font-bold text-sm">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.data.price)}</div>
                           </a>
                         ))}
                       </div>
@@ -194,7 +194,7 @@ const brandCategories = [
                       <span>→</span>
                     </a>
                     <div class="text-sm text-gray-600">
-                      <span class="font-semibold text-red-600">{allProducts.length}</span> sản phẩm chính hãng
+                      <span class="font-semibold text-yellow-600">{allProducts.length}</span> sản phẩm chính hãng
                     </div>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ const brandCategories = [
         <button 
           id="search-trigger-btn"
           onclick="openSearchModal()"
-          class="text-gray-700 hover:text-red-600 p-2.5 rounded-xl hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all group"
+          class="text-gray-700 hover:text-yellow-600 p-2.5 rounded-xl hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all group"
           aria-label="Tìm kiếm"
         >
           <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,7 +222,7 @@ const brandCategories = [
         </button>
         
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="xl:hidden text-gray-700 hover:text-red-600 p-2 rounded-xl hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all">
+        <button id="mobile-menu-btn" class="xl:hidden text-gray-700 hover:text-yellow-600 p-2 rounded-xl hover:bg-gradient-to-br hover:from-red-50 hover:to-orange-50 transition-all">
           <Icon name="menu" class="w-6 h-6" id="menu-icon" />
         </button>
       </div>
@@ -234,11 +234,11 @@ const brandCategories = [
         {menuItems.map((item, index) => (
           <a 
             href={item.href}
-            class={`text-gray-700 hover:text-red-600 font-medium py-3 px-4 rounded-xl transition-all duration-200 flex items-center gap-3 group ${
-              index === 0 ? 'bg-gradient-to-r from-red-50 to-orange-50 text-red-600 font-semibold' : 'hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50'
+            class={`text-gray-700 hover:text-yellow-600 font-medium py-3 px-4 rounded-xl transition-all duration-200 flex items-center gap-3 group ${
+              index === 0 ? 'bg-gradient-to-r from-red-50 to-orange-50 text-yellow-600 font-semibold' : 'hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50'
             }`}
           >
-            <Icon name="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" />
+            <Icon name="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-yellow-600 group-hover:translate-x-1 transition-all" />
             <span>{item.name}</span>
           </a>
         ))}
@@ -258,7 +258,7 @@ const brandCategories = [
             <span>Chat Zalo tư vấn</span>
           </a>
           <div class="flex items-start gap-2 text-gray-700 px-4 py-3 bg-gray-50 rounded-xl">
-            <Icon name="location" class="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+            <Icon name="location" class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
             <span class="text-sm font-medium">{showroomAddress}</span>
           </div>
         </div>

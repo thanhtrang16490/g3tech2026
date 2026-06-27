@@ -50,7 +50,7 @@ const hotProducts = allProducts
         <aside class="col-span-12 lg:col-span-3 relative">
           <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
             <!-- Sidebar Header -->
-            <div class="bg-gradient-to-r from-red-600 via-red-500 to-orange-600 px-5 py-4">
+            <div class="bg-gradient-to-r from-yellow-600 via-yellow-500 to-amber-600 px-5 py-4">
               <h2 class="text-base font-bold text-white flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -72,12 +72,12 @@ const hotProducts = allProducts
                     >
                       <span class="text-2xl group-hover:scale-125 transition-transform duration-300">{category.data.icon}</span>
                       <div class="flex-1 min-w-0">
-                        <div class="font-semibold text-sm text-gray-800 group-hover:text-red-600 transition-colors truncate">
+                        <div class="font-semibold text-sm text-gray-800 group-hover:text-yellow-600 transition-colors truncate">
                           {category.data.name}
                         </div>
                         <div class="text-xs text-gray-500 group-hover:text-red-500 transition-colors">{productCount} sản phẩm</div>
                       </div>
-                      <svg class="w-4 h-4 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all" fill="currentColor" viewBox="0 0 20 20">
+                      <svg class="w-4 h-4 text-gray-400 group-hover:text-yellow-600 group-hover:translate-x-1 transition-all" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                       </svg>
                     </a>
@@ -122,11 +122,11 @@ const hotProducts = allProducts
                                   loading="lazy"
                                 />
                               </div>
-                              <div class="font-semibold text-sm text-gray-900 group-hover/product:text-red-600 transition-colors line-clamp-2 mb-2 min-h-[2.5rem]">
+                              <div class="font-semibold text-sm text-gray-900 group-hover/product:text-yellow-600 transition-colors line-clamp-2 mb-2 min-h-[2.5rem]">
                                 {product.data.name}
                               </div>
                               <div class="flex items-center gap-2 mb-2">
-                                <span class="text-red-600 font-bold text-base">
+                                <span class="text-yellow-600 font-bold text-base">
                                   {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.data.price)}
                                 </span>
                                 {product.data.originalPrice && (
@@ -170,7 +170,7 @@ const hotProducts = allProducts
           <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-4">
             <div class="relative" id="hero-slider" role="region" aria-label="Product slideshow">
               <!-- Slide 1 -->
-              <div class="slide active relative bg-gradient-to-br from-red-600 via-red-500 to-orange-600 p-8 lg:p-12 min-h-[320px]">
+              <div class="slide active relative bg-gradient-to-br from-yellow-600 via-yellow-500 to-amber-600 p-8 lg:p-12 min-h-[320px]">
                 <div class="relative z-10">
                   <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
                     <span class="text-white font-bold text-sm">🔥 Giảm giá lên đến&nbsp;50%</span>
@@ -184,7 +184,7 @@ const hotProducts = allProducts
                   <div class="flex flex-wrap gap-3">
                     <a 
                       href="/products"
-                      class="bg-white text-red-600 hover:bg-gray-50 px-6 py-3 rounded-lg font-bold shadow-lg transition-all inline-flex items-center gap-2"
+                      class="bg-white text-yellow-600 hover:bg-gray-50 px-6 py-3 rounded-lg font-bold shadow-lg transition-all inline-flex items-center gap-2"
                     >
                       <span>🛒</span>
                       Mua ngay
@@ -352,7 +352,7 @@ const hotProducts = allProducts
 
   <!-- Flash Sale Section with Countdown Timer -->
   {hotProducts.length > 0 && (
-    <section class="py-10 bg-gradient-to-r from-red-600 via-red-500 to-orange-500">
+    <section class="py-10 bg-gradient-to-r from-yellow-600 via-yellow-500 to-amber-500">
       <div class="container">
         <!-- Flash Sale Header -->
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 gap-4">
@@ -363,7 +363,7 @@ const hotProducts = allProducts
             <div>
               <div class="flex items-center gap-3 mb-1">
                 <h2 class="text-3xl lg:text-4xl font-extrabold text-white">Flash Sale</h2>
-                <span class="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold animate-pulse">HOT</span>
+                <span class="bg-white text-yellow-600 px-3 py-1 rounded-full text-sm font-bold animate-pulse">HOT</span>
               </div>
               <p class="text-white/90 text-base">Giảm giá sốc - Số lượng có hạn - Kết thúc sau:</p>
               
@@ -384,7 +384,7 @@ const hotProducts = allProducts
               </div>
             </div>
           </div>
-          <a href="/products" class="bg-white text-red-600 hover:bg-gray-50 px-6 py-3 rounded-lg font-bold shadow-lg transition-all text-sm">
+          <a href="/products" class="bg-white text-yellow-600 hover:bg-gray-50 px-6 py-3 rounded-lg font-bold shadow-lg transition-all text-sm">
             Xem tất cả →
           </a>
         </div>
@@ -423,7 +423,7 @@ const hotProducts = allProducts
             <p class="text-gray-600 text-sm">Được khách hàng yêu thích nhất</p>
           </div>
         </div>
-        <a href="/products" class="text-red-600 hover:text-red-700 font-semibold text-sm flex items-center gap-1">
+        <a href="/products" class="text-yellow-600 hover:text-yellow-700 font-semibold text-sm flex items-center gap-1">
           Xem tất cả
           <span>→</span>
         </a>
@@ -450,7 +450,7 @@ const hotProducts = allProducts
         <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center h-24 hover:shadow-lg transition-all group border border-gray-200">
           <div class="text-center">
             <div class="text-3xl mb-2">🏠</div>
-            <div class="font-bold text-gray-800 group-hover:text-red-600 transition-colors">Aqara</div>
+            <div class="font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">Aqara</div>
           </div>
         </div>
         
@@ -458,7 +458,7 @@ const hotProducts = allProducts
         <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center h-24 hover:shadow-lg transition-all group border border-gray-200">
           <div class="text-center">
             <div class="text-3xl mb-2">📱</div>
-            <div class="font-bold text-gray-800 group-hover:text-red-600 transition-colors">Xiaomi</div>
+            <div class="font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">Xiaomi</div>
           </div>
         </div>
         
@@ -466,7 +466,7 @@ const hotProducts = allProducts
         <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center h-24 hover:shadow-lg transition-all group border border-gray-200">
           <div class="text-center">
             <div class="text-3xl mb-2">📹</div>
-            <div class="font-bold text-gray-800 group-hover:text-red-600 transition-colors">EZVIZ</div>
+            <div class="font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">EZVIZ</div>
           </div>
         </div>
         
@@ -474,7 +474,7 @@ const hotProducts = allProducts
         <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center h-24 hover:shadow-lg transition-all group border border-gray-200">
           <div class="text-center">
             <div class="text-3xl mb-2">💡</div>
-            <div class="font-bold text-gray-800 group-hover:text-red-600 transition-colors">Yeelight</div>
+            <div class="font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">Yeelight</div>
           </div>
         </div>
         
@@ -482,7 +482,7 @@ const hotProducts = allProducts
         <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center h-24 hover:shadow-lg transition-all group border border-gray-200">
           <div class="text-center">
             <div class="text-3xl mb-2">💡</div>
-            <div class="font-bold text-gray-800 group-hover:text-red-600 transition-colors">Philips</div>
+            <div class="font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">Philips</div>
           </div>
         </div>
         
@@ -490,7 +490,7 @@ const hotProducts = allProducts
         <div class="bg-gray-50 rounded-xl p-6 flex items-center justify-center h-24 hover:shadow-lg transition-all group border border-gray-200">
           <div class="text-center">
             <div class="text-3xl mb-2">🔐</div>
-            <div class="font-bold text-gray-800 group-hover:text-red-600 transition-colors">Lockin</div>
+            <div class="font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">Lockin</div>
           </div>
         </div>
       </div>
@@ -595,19 +595,19 @@ const hotProducts = allProducts
       <!-- Stats -->
       <div class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="text-center">
-          <div class="text-4xl font-extrabold text-red-600 mb-2">500+</div>
+          <div class="text-4xl font-extrabold text-yellow-600 mb-2">500+</div>
           <div class="text-gray-600">Khách hàng hài lòng</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl font-extrabold text-red-600 mb-2">4.9/5</div>
+          <div class="text-4xl font-extrabold text-yellow-600 mb-2">4.9/5</div>
           <div class="text-gray-600">Đánh giá trung bình</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl font-extrabold text-red-600 mb-2">50+</div>
+          <div class="text-4xl font-extrabold text-yellow-600 mb-2">50+</div>
           <div class="text-gray-600">Dự án đã thi công</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl font-extrabold text-red-600 mb-2">24/7</div>
+          <div class="text-4xl font-extrabold text-yellow-600 mb-2">24/7</div>
           <div class="text-gray-600">Hỗ trợ khách hàng</div>
         </div>
       </div>
@@ -653,9 +653,9 @@ const hotProducts = allProducts
               <div class="flex items-center justify-between mb-3">
                 <div>
                   <span class="text-gray-400 line-through text-sm">8.500.000₫</span>
-                  <div class="text-3xl font-extrabold text-red-600">5.990.000₫</div>
+                  <div class="text-3xl font-extrabold text-yellow-600">5.990.000₫</div>
                 </div>
-                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-bold">-30%</span>
+                <span class="bg-red-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-bold">-30%</span>
               </div>
               <a 
                 href="https://zalo.me/0947776662?text=Tôi muốn tư vấn giải pháp Phòng Khách Thông Minh"
@@ -698,9 +698,9 @@ const hotProducts = allProducts
               <div class="flex items-center justify-between mb-3">
                 <div>
                   <span class="text-gray-400 line-through text-sm">12.000.000₫</span>
-                  <div class="text-3xl font-extrabold text-red-600">8.990.000₫</div>
+                  <div class="text-3xl font-extrabold text-yellow-600">8.990.000₫</div>
                 </div>
-                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-bold">-25%</span>
+                <span class="bg-red-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-bold">-25%</span>
               </div>
               <a 
                 href="https://zalo.me/0947776662?text=Tôi muốn tư vấn giải pháp Phòng Ngủ Thông Minh"
@@ -715,7 +715,7 @@ const hotProducts = allProducts
         
         <!-- Solution 3: Home Security -->
         <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group border-2 border-transparent hover:border-red-500 relative">
-          <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+          <div class="absolute top-4 right-4 bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
             HOT
           </div>
           <div class="bg-gradient-to-r from-green-600 to-emerald-600 p-6 text-white">
@@ -746,9 +746,9 @@ const hotProducts = allProducts
               <div class="flex items-center justify-between mb-3">
                 <div>
                   <span class="text-gray-400 line-through text-sm">15.000.000₫</span>
-                  <div class="text-3xl font-extrabold text-red-600">10.990.000₫</div>
+                  <div class="text-3xl font-extrabold text-yellow-600">10.990.000₫</div>
                 </div>
-                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-bold">-27%</span>
+                <span class="bg-red-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-bold">-27%</span>
               </div>
               <a 
                 href="https://zalo.me/0947776662?text=Tôi muốn tư vấn giải pháp An Ninh Toàn Diện"
@@ -779,7 +779,7 @@ const hotProducts = allProducts
                   <span class="text-3xl">{category.data.icon}</span>
                   <h3 class="text-lg font-bold text-gray-900">{category.data.name}</h3>
                 </div>
-                <a href={`/products?category=${category.data.slug}`} class="text-red-600 hover:text-red-700 font-semibold text-sm">
+                <a href={`/products?category=${category.data.slug}`} class="text-yellow-600 hover:text-yellow-700 font-semibold text-sm">
                   Xem thêm →
                 </a>
               </div>
@@ -794,7 +794,7 @@ const hotProducts = allProducts
                       />
                       <h4 class="text-xs font-semibold text-gray-800 line-clamp-2 mb-1">{product.data.name}</h4>
                       <div class="flex items-center gap-2">
-                        <span class="text-red-600 font-bold text-sm">{product.data.price.toLocaleString('vi-VN')}₫</span>
+                        <span class="text-yellow-600 font-bold text-sm">{product.data.price.toLocaleString('vi-VN')}₫</span>
                         {product.data.originalPrice && (
                           <span class="text-gray-400 line-through text-xs">{product.data.originalPrice.toLocaleString('vi-VN')}₫</span>
                         )}
@@ -824,7 +824,7 @@ const hotProducts = allProducts
               <p class="text-gray-600 text-sm">Sản phẩm mới nhất, công nghệ tiên tiến</p>
             </div>
           </div>
-          <a href="/products" class="text-red-600 hover:text-red-700 font-semibold text-sm flex items-center gap-1">
+          <a href="/products" class="text-yellow-600 hover:text-yellow-700 font-semibold text-sm flex items-center gap-1">
             Xem tất cả
             <span>→</span>
           </a>
@@ -920,11 +920,11 @@ const hotProducts = allProducts
   {/* CTA Banner */}
   <section class="py-12 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
     <div class="container">
-      <div class="bg-gradient-to-r from-red-600 via-red-500 to-orange-600 rounded-2xl p-8 lg:p-12 text-center text-white shadow-2xl">
+      <div class="bg-gradient-to-r from-yellow-600 via-yellow-500 to-amber-600 rounded-2xl p-8 lg:p-12 text-center text-white shadow-2xl">
         <h2 class="text-3xl lg:text-4xl font-extrabold mb-4 text-balance">Cần Tư Vấn Giải Pháp Công Cụ Nhà Thông Minh Maker?</h2>
         <p class="text-xl mb-6 text-white/90 text-pretty">Liên hệ ngay để được tư vấn miễn phí và nhận báo giá tốt nhất</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:0947776662" class="bg-white text-red-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold text-lg shadow-xl transition-all flex items-center justify-center gap-3">
+          <a href="tel:0947776662" class="bg-white text-yellow-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold text-lg shadow-xl transition-all flex items-center justify-center gap-3">
             <span>📞</span>
             <span>Gọi: 094 777 6662</span>
           </a>

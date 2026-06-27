@@ -1,0 +1,22 @@
+{
+  "name": "Công Tắc Thông Minh Aqara Z1 Pro",
+  "category": "smart-switch",
+  "price": 790000,
+  "originalPrice": 990000,
+  "image": "/images/products/aqara-z1-pro.png",
+  "badge": null,
+  "rating": 5,
+  "reviews": 42,
+  "description": "Công tắc cảm ứng sang trọng, điều khiển qua app",
+  "featured": false,
+  "hotDeal": false,
+  "newArrival": false,
+  "sourceUrl": "https://thaihungsmarthome.com/san-pham/aqara-z1-pro",
+  "sourceWebsite": "thaihungsmarthome.com",
+  "specs": [
+    "Cảm ứng",
+    "Zigbee",
+    "1-3 gang",
+    "Công suất 2500W"
+  ]
+}
