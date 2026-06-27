@@ -11,4 +11,35 @@ export default defineConfig({
     react(),
   ],
   output: 'static',
+  image: {
+    domains: [
+      'makitavietnam.com',
+      'makita.net',
+      'makitatools.com',
+      'bosch-professional.com',
+      'bosch-tools.com',
+      'dewalt.com',
+      'jasic.com.cn',
+      'mitutoyo.com.vn',
+      'store.arduino.cc',
+      'arduino.cc',
+      'creality.com',
+      'esun3d.com',
+      'anycubic.com',
+      'raspberrypi.com',
+      'hakko.com',
+    ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'makitavietnam.com',
+        pathname: '/wp-content/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'mitutoyo.com.vn',
+        pathname: '/wp-content/uploads/**',
+      },
+    ],
+  },
 });

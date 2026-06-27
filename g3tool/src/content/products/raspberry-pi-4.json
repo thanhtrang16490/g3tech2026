@@ -3,7 +3,7 @@
   "category": "electronics-iot",
   "price": 1850000,
   "originalPrice": 2200000,
-  "image": "/images/products/raspberry-pi-4.jpg",
+  "image": "https://www.raspberrypi.com/app/uploads/2020/09/Raspberry-Pi-4-Model-B-1.jpg",
   "badge": "Hot",
   "newArrival": true,
   "featured": true,
