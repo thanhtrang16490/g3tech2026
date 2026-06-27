@@ -1,0 +1,8 @@
+{
+  "id": "fitness-equipment",
+  "name": "Fitness Equipment",
+  "description": "Resistance bands, home gym, and smart fitness devices",
+  "slug": "fitness-equipment",
+  "icon": "dumbbell",
+  "order": 5
+}

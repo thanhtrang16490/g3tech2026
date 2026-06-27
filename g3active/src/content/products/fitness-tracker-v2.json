@@ -1,0 +1,16 @@
+{
+  "id": "fitness-tracker-v2",
+  "name": "Fitness Tracker V2",
+  "description": "Lightweight fitness tracker with sleep monitoring and step counter",
+  "price": 1490000,
+  "category": "smart-wearables",
+  "image": "/images/products/fitness-tracker-v2.jpg",
+  "featured": false,
+  "brand": "G3Active",
+  "specs": {
+    "display": "0.96 inch OLED",
+    "battery": "10 days",
+    "waterproof": "30m",
+    "gps": false
+  }
+}

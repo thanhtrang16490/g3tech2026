@@ -1,0 +1,16 @@
+{
+  "id": "portable-speaker-blast",
+  "name": "Portable Speaker Blast",
+  "description": "Waterproof portable speaker with 360° sound and 12-hour battery",
+  "price": 1990000,
+  "category": "sports-audio",
+  "image": "/images/products/portable-speaker-blast.jpg",
+  "featured": false,
+  "brand": "G3Active",
+  "specs": {
+    "battery": "12 hours",
+    "waterproof": "IPX7",
+    "power": "20W",
+    "weight": "540g"
+  }
+}

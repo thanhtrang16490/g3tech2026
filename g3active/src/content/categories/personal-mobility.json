@@ -1,0 +1,8 @@
+{
+  "id": "personal-mobility",
+  "name": "Personal Mobility",
+  "description": "Electric scooters, e-bikes, and mobility accessories",
+  "slug": "personal-mobility",
+  "icon": "bike",
+  "order": 4
+}

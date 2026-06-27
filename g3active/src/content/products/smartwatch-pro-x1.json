@@ -1,0 +1,16 @@
+{
+  "id": "smartwatch-pro-x1",
+  "name": "SmartWatch Pro X1",
+  "description": "GPS smartwatch with heart rate monitoring, 7-day battery life, and 50m water resistance",
+  "price": 4990000,
+  "category": "smart-wearables",
+  "image": "/images/products/smartwatch-pro-x1.jpg",
+  "featured": true,
+  "brand": "G3Active",
+  "specs": {
+    "display": "1.4 inch AMOLED",
+    "battery": "7 days",
+    "waterproof": "50m",
+    "gps": true
+  }
+}

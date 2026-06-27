@@ -1,0 +1,16 @@
+{
+  "id": "smart-scale-body",
+  "name": "Smart Scale Body+",
+  "description": "Smart body composition scale with 13 metrics and app sync",
+  "price": 890000,
+  "category": "recovery-tech",
+  "image": "/images/products/smart-scale-body.jpg",
+  "featured": false,
+  "brand": "G3Active",
+  "specs": {
+    "metrics": "13 body metrics",
+    "connectivity": "Bluetooth + WiFi",
+    "max_weight": "180kg",
+    "users": "Unlimited"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "smart-wearables",
+  "name": "Smart Wearables",
+  "description": "Smartwatches, fitness trackers, and GPS watches for active lifestyles",
+  "slug": "smart-wearables",
+  "icon": "watch",
+  "order": 1
+}

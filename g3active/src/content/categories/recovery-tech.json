@@ -1,0 +1,8 @@
+{
+  "id": "recovery-tech",
+  "name": "Recovery Tech",
+  "description": "Massage guns, smart scales, and recovery devices",
+  "slug": "recovery-tech",
+  "icon": "heart-pulse",
+  "order": 3
+}

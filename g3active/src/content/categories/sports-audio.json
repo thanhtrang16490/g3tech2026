@@ -1,0 +1,8 @@
+{
+  "id": "sports-audio",
+  "name": "Sports Audio",
+  "description": "Sports earbuds and portable speakers for active listening",
+  "slug": "sports-audio",
+  "icon": "headphones",
+  "order": 2
+}

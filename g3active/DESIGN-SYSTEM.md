@@ -1,4 +1,5 @@
-# G3BOX Design System
+# G3Active Design System
+## Active Tech & Personal Sports
 ## Based on UI UX Pro Max Standards v2.0
 
 ---
@@ -27,15 +28,16 @@
 ---
 
 ## COLORS:
-- **Primary**: #2563EB (Royal Blue) - Trust, technology
-- **Secondary**: #F59E0B (Amber) - CTA, highlights
-- **Success**: #10B981 (Emerald) - Phone, positive actions
+- **Primary**: #E53935 (Red) - Energy, action, passion
+- **Secondary**: #1E1E1E (Dark Gray) - Technology, premium
+- **Accent**: #FF8F00 (Orange) -活力, innovation, highlights
+- **Success**: #10B981 (Emerald) - Health, positive actions
 - **Background**: #FFFFFF (White)
-- **Surface**: #F9FAFB (Warm Gray 50)
-- **Text Primary**: #111827 (Gray 900) - Contrast ratio: 15.4:1 ✓
-- **Text Secondary**: #6B7280 (Gray 500) - Contrast ratio: 4.6:1 ✓
-- **Border**: #E5E7EB (Gray 200)
-- **Notes**: Professional tech palette with blue dominance
+- **Surface**: #F5F5F5 (Light Gray)
+- **Text Primary**: #1E1E1E (Dark Gray) - Contrast ratio: 15.4:1 ✓
+- **Text Secondary**: #757575 (Medium Gray) - Contrast ratio: 4.6:1 ✓
+- **Border**: #E0E0E0 (Gray 200)
+- **Notes**: Energetic tech palette with red dominance for active lifestyle
 
 ---
 
@@ -112,10 +114,10 @@
 ## COMPONENTS:
 
 ### Buttons
-- Primary: bg-blue-600, hover:bg-blue-700, white text
-- Secondary: bg-yellow-500, hover:bg-yellow-600, white text
+- Primary: bg-red-600, hover:bg-red-700, white text
+- Secondary: bg-orange-500, hover:bg-orange-600, white text
 - Success: bg-green-500, hover:bg-green-600, white text
-- Outline: border-2, border-blue-600, text-blue-600
+- Outline: border-2, border-red-600, text-red-600
 - Padding: px-6 py-3 (16px+ height)
 - Border radius: rounded-lg (8px)
 - Font: font-semibold
@@ -131,7 +133,7 @@
 
 ### Inputs
 - Border: border border-gray-300
-- Focus: ring-2 ring-blue-500 border-transparent
+- Focus: ring-2 ring-red-500 border-transparent
 - Padding: px-4 py-3
 - Border radius: rounded-lg
 - Height: min-h-[48px]

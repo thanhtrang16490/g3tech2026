@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import G3BoxLogo from './G3BoxLogo';
+import G3ActiveLogo from './G3ActiveLogo';
 import { getCollection } from 'astro:content';
 
 // Load categories and featured products
@@ -10,41 +10,34 @@ const featuredProducts = allProducts.filter(p => p.data.featured).slice(0, 6);
 
 const menuItems = [
   { name: 'Trang chủ', href: '/' },
-  { name: 'Giải pháp', href: '/#solutions' },
-  { 
-    name: 'Sản phẩm', 
-    href: '/products',
-    hasMegaMenu: true
-  },
-  { name: 'Hệ sinh thái', href: '/#ecosystem' },
-  { name: 'Tin tức', href: '/#news' },
-  { name: 'Giới thiệu', href: '/gioi-thieu' },
+  { name: 'Sản phẩm', href: '/products', hasMegaMenu: true },
+  { name: 'Lifestyle', href: '/#lifestyle' },
+  { name: 'Công nghệ', href: '/#technology' },
+  { name: 'Cộng đồng', href: '/#community' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Liên hệ', href: '/lien-he' }
 ];
 
 const phoneNumber = '0947776662';
 const zaloUrl = 'https://zalo.me/0947776662';
-const showroomAddress = 'SH14-113, Ocenpark 2, xã Nghĩa Trụ, Hưng Yên';
+const showroomAddress = 'Hà Nội, Việt Nam';
 
-// Category icons and colors - inspired by thaihungsmarthome.com
+// Category icons and colors for G3Active
 const categoryMeta: Record<string, { icon: string; color: string }> = {
-  'bo-dieu-khien-trung-tam': { icon: '🎛️', color: 'from-blue-500 to-blue-600' },
-  'cong-tac-thong-minh': { icon: '🔘', color: 'from-green-500 to-green-600' },
-  'den-thong-minh': { icon: '💡', color: 'from-yellow-500 to-orange-500' },
-  'khoa-cua-thong-minh': { icon: '🔐', color: 'from-purple-500 to-purple-600' },
-  'cam-bien-tu-dong-hoa': { icon: '📡', color: 'from-cyan-500 to-cyan-600' },
-  'camera-ai': { icon: '📹', color: 'from-red-500 to-red-600' },
-  'rem-tu-dong': { icon: '🪟', color: 'from-indigo-500 to-indigo-600' },
-  'loa-thong-minh': { icon: '🔊', color: 'from-pink-500 to-pink-600' },
-  'gia-dung-thong-minh': { icon: '🏡', color: 'from-teal-500 to-teal-600' },
+  'smart-wearables': { icon: '⌚', color: 'from-red-500 to-red-600' },
+  'sports-audio': { icon: '🎧', color: 'from-orange-500 to-orange-600' },
+  'recovery-tech': { icon: '💪', color: 'from-green-500 to-green-600' },
+  'personal-mobility': { icon: '🚴', color: 'from-blue-500 to-blue-600' },
+  'fitness-equipment': { icon: '🏋️', color: 'from-purple-500 to-purple-600' },
+  'outdoor-tech': { icon: '🏕️', color: 'from-teal-500 to-teal-600' },
 };
 
-// Brand categories (like thaihungsmarthome.com)
+// Active lifestyle categories
 const brandCategories = [
-  { name: 'Aqara Smart Home', slug: 'aqara', icon: '🏠' },
-  { name: 'Yeelight Lighting', slug: 'yeelight', icon: '💡' },
-  { name: 'EZVIZ Security', slug: 'ezviz', icon: '📹' },
-  { name: 'Xiaomi Smart', slug: 'xiaomi', icon: '📱' },
+  { name: 'Running & Fitness', slug: 'running', icon: '🏃' },
+  { name: 'Cycling & Mobility', slug: 'cycling', icon: '🚴' },
+  { name: 'Gym & Training', slug: 'gym', icon: '💪' },
+  { name: 'Outdoor Adventure', slug: 'outdoor', icon: '🏕️' },
 ];
 ---
 
@@ -82,10 +75,10 @@ const brandCategories = [
     <div class="flex items-center justify-between py-1">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3 group">
-        <G3BoxLogo client:load size="md" />
+        <G3ActiveLogo client:load size="md" />
         <div class="hidden lg:block">
-          <div class="text-sm font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Thiết Bị Nhà Thông Minh</div>
-          <div class="text-xs text-gray-600 font-medium">Chính hãng • Giá tốt • Bảo hành 24T</div>
+          <div class="text-sm font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Move Smarter. Live Better.</div>
+          <div class="text-xs text-gray-600 font-medium">Active Tech & Personal Sports</div>
         </div>
       </a>
 
@@ -113,7 +106,7 @@ const brandCategories = [
                     <div class="col-span-3 border-r border-gray-200 pr-6">
                       <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
                         <span class="w-1 h-5 bg-gradient-to-b from-red-500 to-orange-500 rounded-full"></span>
-                        Thương hiệu
+                        Activity Type
                       </h3>
                       <div class="space-y-2">
                         {brandCategories.map(brand => (
@@ -131,8 +124,8 @@ const brandCategories = [
                     {/* Center: Product Categories (6 cols) */}
                     <div class="col-span-6">
                       <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
-                        <span class="w-1 h-5 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full"></span>
-                        Danh mục sản phẩm
+                        <span class="w-1 h-5 bg-gradient-to-b from-red-500 to-orange-500 rounded-full"></span>
+                        Product Categories
                       </h3>
                       <div class="grid grid-cols-2 gap-3">
                         {allCategories.sort((a, b) => a.data.order - b.data.order).map(category => {
@@ -160,7 +153,7 @@ const brandCategories = [
                     <div class="col-span-3">
                       <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-gray-800">
                         <span class="w-1 h-5 bg-gradient-to-b from-orange-500 to-red-500 rounded-full"></span>
-                        Hot Deals
+                        Featured Products
                       </h3>
                       <div class="space-y-3">
                         {featuredProducts.map(product => (
@@ -190,7 +183,7 @@ const brandCategories = [
                       href="/products"
                       class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105"
                     >
-                      Xem tất cả sản phẩm
+                      Xem tất cả
                       <span>→</span>
                     </a>
                     <div class="text-sm text-gray-600">

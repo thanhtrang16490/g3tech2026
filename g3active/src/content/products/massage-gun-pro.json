@@ -1,0 +1,16 @@
+{
+  "id": "massage-gun-pro",
+  "name": "Massage Gun Pro",
+  "description": "Professional percussion massage gun with 6 speed levels and 4 heads",
+  "price": 3490000,
+  "category": "recovery-tech",
+  "image": "/images/products/massage-gun-pro.jpg",
+  "featured": true,
+  "brand": "G3Active",
+  "specs": {
+    "speeds": "6 levels",
+    "battery": "4 hours",
+    "amplitude": "12mm",
+    "weight": "680g"
+  }
+}

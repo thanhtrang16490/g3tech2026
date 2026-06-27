@@ -1,0 +1,16 @@
+{
+  "id": "sports-earbuds-air",
+  "name": "Sports Earbuds Air",
+  "description": "Wireless earbuds designed for sports with secure fit and sweat resistance",
+  "price": 2490000,
+  "category": "sports-audio",
+  "image": "/images/products/sports-earbuds-air.jpg",
+  "featured": true,
+  "brand": "G3Active",
+  "specs": {
+    "battery": "8 hours + 24h case",
+    "waterproof": "IPX5",
+    "bluetooth": "5.3",
+    "weight": "5.4g per bud"
+  }
+}
