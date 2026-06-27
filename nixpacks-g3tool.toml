@@ -1,0 +1,11 @@
+[phases.setup]
+nixpkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["cd g3tool && yarn install"]
+
+[phases.build]
+cmds = ["cd g3tool && yarn build"]
+
+[start]
+cmd = "cd g3tool && serve dist -p $PORT -s"
