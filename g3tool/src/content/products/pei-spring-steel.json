@@ -1,0 +1,21 @@
+{
+  "name": "Tấm Nhiệt PEI Spring Steel 235x235mm",
+  "category": "3d-printers",
+  "price": 350000,
+  "originalPrice": 450000,
+  "image": "/images/products/pei-spring-steel.jpg",
+  "badge": "Nâng cấp",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.8,
+  "reviews": 189,
+  "description": "Tấm nhiệt PEI Spring Steel cho máy in 3D, kích thước 235x235mm, bám dính tốt, dễ tháo sản phẩm",
+  "specs": [
+    "Kích thước: 235x235mm",
+    "Chất liệu: Spring Steel + PEI coating",
+    "Độ dày: 0.4mm",
+    "Bám dính: Excellent (không cần keo)",
+    "Tháo sản phẩm: Uốn cong tấm (flexible)",
+    "Tương thích: Ender-3, CR-10, Prusa MK3S"
+  ]
+}

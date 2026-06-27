@@ -1,0 +1,21 @@
+{
+  "name": "Thước Đo Laser Bosch GLM 50-27 CG",
+  "category": "measuring-instruments",
+  "price": 1690000,
+  "originalPrice": 2100000,
+  "image": "/images/products/bosch-glm-50.jpg",
+  "badge": "Chính hãng",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.8,
+  "reviews": 234,
+  "description": "Thước đo khoảng cách laser Bosch GLM 50-27 CG, tầm đo 50m, độ chính xác ±1.5mm, laser xanh",
+  "specs": [
+    "Tầm đo: 0.05-50m",
+    "Độ chính xác: ±1.5mm",
+    "Đơn vị nhỏ nhất: 0.5mm",
+    "Laser: Xanh (dễ nhìn hơn đỏ)",
+    "Kết nối: Bluetooth (ứng dụng MeasureOn)",
+    "Bảo hành: 12 tháng Bosch"
+  ]
+}

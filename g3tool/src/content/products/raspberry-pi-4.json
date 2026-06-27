@@ -1,0 +1,21 @@
+{
+  "name": "Raspberry Pi 4 Model B 8GB",
+  "category": "electronics-iot",
+  "price": 1850000,
+  "originalPrice": 2200000,
+  "image": "/images/products/raspberry-pi-4.jpg",
+  "badge": "Hot",
+  "newArrival": true,
+  "featured": true,
+  "rating": 4.9,
+  "reviews": 312,
+  "description": "Raspberry Pi 4 Model B RAM 8GB, máy tính nhúng mạnh mẽ cho IoT, AI, home automation",
+  "specs": [
+    "CPU: Broadcom BCM2711 Quad-core Cortex-A72",
+    "RAM: 8GB LPDDR4",
+    "GPU: VideoCore VI, hỗ trợ 4K",
+    "Kết nối: WiFi 802.11ac, Bluetooth 5.0, Gigabit Ethernet",
+    "Cổng: 2x USB 3.0, 2x USB 2.0, 2x micro-HDMI",
+    "Bảo hành: 12 tháng"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Màn Hình OLED 0.96 inch I2C",
+  "category": "electronics-iot",
+  "price": 45000,
+  "originalPrice": 65000,
+  "image": "/images/products/oled-096.jpg",
+  "badge": "Giá tốt",
+  "newArrival": false,
+  "featured": false,
+  "rating": 4.6,
+  "reviews": 456,
+  "description": "Màn hình OLED 0.96 inch 128x64 pixels, giao tiếp I2C, tương thích Arduino/Raspberry Pi",
+  "specs": [
+    "Kích thước: 0.96 inch",
+    "Độ phân giải: 128x64 pixels",
+    "Giao tiếp: I2C (2 dây)",
+    "Điện áp: 3.3-5V",
+    "Màu sắc: Trắng/Xanh/Vàng (tùy chọn)",
+    "Tương thích: Arduino, ESP32, Raspberry Pi"
+  ]
+}
