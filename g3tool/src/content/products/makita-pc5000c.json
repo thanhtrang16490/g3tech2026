@@ -1,0 +1,20 @@
+{
+  "name": "Máy Mài Bê Tông Makita PC5000C",
+  "category": "industrial-tools",
+  "price": 9380000,
+  "originalPrice": 11000000,
+  "image": "https://makitavietnam.com/wp-content/uploads/2023/10/pc5000c-1.jpg",
+  "badge": "Professional",
+  "newArrival": false,
+  "featured": true,
+  "rating": 5,
+  "reviews": 56,
+  "description": "Máy mài bê tông PC5000C, công suất 1400W, đĩa 125mm, điều khiển điện tử, phù hợp sàn công nghiệp",
+  "specs": [
+    "Công suất: 1400W",
+    "Đường kính đĩa: 125mm",
+    "Tốc độ: 10,000 vòng/phút",
+    "Điều khiển điện tử (constant speed)",
+    "Bảo hành: 12 tháng Makita"
+  ]
+}
