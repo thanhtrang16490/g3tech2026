@@ -49,6 +49,7 @@ const productDescription = isContentCollection ? product.data!.description : pro
 const productSpecs = isContentCollection ? product.data!.specs : product.specs || [];
 
 function formatPrice(price: number): string {
+  if (price === 0) return 'Liên hệ';
   return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
 }
 
