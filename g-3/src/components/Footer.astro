@@ -361,15 +361,24 @@ const sections = [
 				<p class="text-left text-gray-500 text-sm px-0">
 					© G3TECH {new Date().getFullYear()}
 					<br />
-					{COMPANY_INFO.name} - GPĐKKD: 0110907369 do sở KH & ĐT TP Hà
+					{COMPANY_INFO.name} - GPĐKKD: 0110907369 do sở KH & ĐT TP Hà 
 					Nội cấp ngày 04/12/2024 <br />
-					Địa chỉ: Tầng 7, Tòa nhà Charmvit, số 117 Trần Duy Hưng, Phường
-					Trung Hoà, Quận Cầu Giấy,Hà Nội
+					Địa chỉ: {COMPANY_INFO.address}
 				</p>
-				<!-- <div class="flex gap-2 mt-2 md:mt-0">
-					<img src="/images/dmca-badge.png" alt="DMCA" class="h-6" />
-					<img src="/images/bo-cong-thuong.png" alt="Đã thông báo" class="h-6" />
-				</div> -->
+				<div class="flex gap-3 mt-3">
+					<a 
+						href="http://online.gov.vn/Home/WebDetails/137573" 
+						target="_blank" 
+						rel="noopener noreferrer"
+						aria-label="Đã thông báo Bộ Công Thương"
+					>
+						<img 
+							src="/images/bo-cong-thuong.png" 
+							alt="Đã thông báo Bộ Công Thương" 
+							class="h-8 hover:opacity-80 transition-opacity" 
+						/>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
