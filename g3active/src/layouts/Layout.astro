@@ -31,7 +31,19 @@ interface Props {
   structuredData?: any;
 }
 
-const { title, description = 'G3BOX - Công Ty Cổ phần Công nghệ G3 Việt Nam. Chuyên cung cấp thiết bị nhà thông minh chính hãng Aqara, Xiaomi, EZVIZ. Showroom tại Hưng Yên. Tư vấn miễn phí: 094 777 6662', image = '/og-image.jpg', canonicalUrl, structuredData } = Astro.props;
+const { title, description = 'G3Active - Công Ty Cổ Phần Công Nghệ G3 Việt Nam. Giải pháp thể thao thông minh, thiết bị tập luyện chính hãng. Tư vấn 24/7: 094 777 6662', image = '/og-image.jpg', canonicalUrl, structuredData } = Astro.props;
+
+// Company information for consistent SEO
+const companyInfo = {
+  name: 'Công Ty Cổ Phần Công Nghệ G3 Việt Nam',
+  shortName: 'G3Active',
+  phone: '0947776662',
+  phoneFormatted: '094 777 6662',
+  email: 'info@g3active.com',
+  address: 'Lô A17, Khu đô thị mới, xã Hùng Cường, TP. Hưng Yên, tỉnh Hưng Yên, Việt Nam',
+  taxCode: '0901940268',
+  website: 'https://g3active.com'
+};
 
 // Generate canonical URL
 const canonicalURL = canonicalUrl || Astro.url;
@@ -50,13 +62,19 @@ const ogImage = image;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content="nhà thông minh, smart home, aqara, xiaomi, ezviz, thiết bị thông minh, khóa cửa thông minh, công tắc thông minh, camera an ninh, g3box" />
-    <meta name="author" content="G3BOX - Công Ty Cổ phần Công nghệ G3 Việt Nam" />
+    <meta name="author" content="{companyInfo.name}" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
+    <meta name="contact" content={companyInfo.phone} />
+    <meta name="email" content={companyInfo.email} />
     <link rel="canonical" href={canonicalURL} />
     
+    <!-- Verification for Search Engines -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+    <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" />
+    
     <!-- Geo Meta Tags for Local SEO -->
-    <meta name="geo.region" content="VN-HN" />
+    <meta name="geo.region" content="VN-HY" />
     <meta name="geo.placename" content="Hưng Yên" />
     <meta name="geo.position" content="20.8528;106.0161" />
     <meta name="ICBM" content="20.8528, 106.0161" />
@@ -84,7 +102,9 @@ const ogImage = image;
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="G3BOX - Thiết bị nhà thông minh chính hãng" />
     <meta property="og:locale" content="vi_VN" />
-    <meta property="og:site_name" content="G3BOX" />
+    <meta property="og:site_name" content="G3Active" />
+    <meta property="place:location:latitude" content="20.8528" />
+    <meta property="place:location:longitude" content="106.0161" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -121,6 +141,74 @@ const ogImage = image;
     
     <!-- Floating Contact Buttons (Zalo + Phone) -->
     <FloatingContact />
+    
+    <!-- Organization Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": companyInfo.website + "#organization",
+      "name": companyInfo.name,
+      "alternateName": companyInfo.shortName,
+      "url": companyInfo.website,
+      "logo": companyInfo.website + "/logo.png",
+      "telephone": companyInfo.phone,
+      "email": companyInfo.email,
+      "taxID": companyInfo.taxCode,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lô A17, Khu đô thị mới, xã Hùng Cường",
+        "addressLocality": "TP. Hưng Yên",
+        "addressRegion": "Hưng Yên",
+        "addressCountry": "VN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/g3active.com",
+        "https://www.youtube.com/@g3active"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": companyInfo.phone,
+        "contactType": "customer service",
+        "availableLanguage": ["Vietnamese"],
+        "areaServed": "VN"
+      }
+    })} />
+    
+    <!-- LocalBusiness Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": companyInfo.website + "#localbusiness",
+      "name": companyInfo.name,
+      "image": companyInfo.website + "/og-image.jpg",
+      "telephone": companyInfo.phone,
+      "email": companyInfo.email,
+      "url": companyInfo.website,
+      "priceRange": "₫₫",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lô A17, Khu đô thị mới, xã Hùng Cường",
+        "addressLocality": "TP. Hưng Yên",
+        "addressRegion": "Hưng Yên",
+        "postalCode": "17000",
+        "addressCountry": "VN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 20.8528,
+        "longitude": 106.0161
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "21:00"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Vietnam"
+      }
+    })} />
     
     <!-- Structured Data (JSON-LD) -->
     {structuredData && Array.isArray(structuredData) && structuredData.map((data) => (
@@ -325,15 +413,15 @@ const ogImage = image;
         
         if (!input || !resultsList || !resultsItems || !resultsCount || !emptyState || !quickActions) return;
         
-        let debounceTimer;
+        let debounceTimer: NodeJS.Timeout | number;
         let selectedIndex = -1;
         
-        function performSearch(query) {
+        function performSearch(query: string) {
           if (!query || query.length < 2) {
             // Show quick actions
-            if (quickActions) quickActions.style.display = '';
-            resultsList.classList.add('hidden');
-            emptyState.classList.add('hidden');
+            if (quickActions) (quickActions as HTMLElement).style.display = '';
+            resultsList!.classList.add('hidden');
+            emptyState!.classList.add('hidden');
             return;
           }
           
@@ -346,20 +434,20 @@ const ogImage = image;
           
           if (filtered.length === 0) {
             // Show empty state
-            if (quickActions) quickActions.style.display = 'none';
-            resultsList.classList.add('hidden');
-            emptyState.classList.remove('hidden');
+            if (quickActions) (quickActions as HTMLElement).style.display = 'none';
+            resultsList!.classList.add('hidden');
+            emptyState!.classList.remove('hidden');
             return;
           }
           
           // Show results
-          if (quickActions) quickActions.style.display = 'none';
-          emptyState.classList.add('hidden');
-          resultsList.classList.remove('hidden');
+          if (quickActions) (quickActions as HTMLElement).style.display = 'none';
+          emptyState!.classList.add('hidden');
+          resultsList!.classList.remove('hidden');
           
-          resultsCount.textContent = `Tìm thấy ${filtered.length} sản phẩm`;
+          resultsCount!.textContent = `Tìm thấy ${filtered.length} sản phẩm`;
           
-          resultsItems.innerHTML = filtered.map((product, index) => {
+          resultsItems!.innerHTML = filtered.map((product, index) => {
             const priceFormatted = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price);
             return `<a href="/products/${product.id}" class="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors group ${index === selectedIndex ? 'bg-red-50 border-l-4 border-red-600' : ''}" data-index="${index}">
               <img src="${product.image}" alt="${product.name}" class="w-14 h-14 object-cover rounded-lg bg-gray-100 flex-shrink-0" />
@@ -379,9 +467,10 @@ const ogImage = image;
         }
         
         // Input event with debounce
-        input.addEventListener('input', function(e) {
+        input.addEventListener('input', function(e: Event) {
           clearTimeout(debounceTimer);
-          const query = e.target.value;
+          const target = e.target as HTMLInputElement;
+          const query = target.value;
           
           debounceTimer = setTimeout(function() {
             performSearch(query);
@@ -389,11 +478,11 @@ const ogImage = image;
         });
         
         // Quick button clicks
-        quickBtns.forEach(function(btn) {
+        quickBtns.forEach(function(btn: Element) {
           btn.addEventListener('click', function() {
-            const query = btn.getAttribute('data-query');
+            const query = (btn as HTMLElement).getAttribute('data-query');
             if (query) {
-              input.value = query;
+              (input as HTMLInputElement).value = query;
               performSearch(query);
               input.focus();
             }
@@ -419,8 +508,8 @@ const ogImage = image;
           }
         });
         
-        function updateSelected(items) {
-          items.forEach(function(item, index) {
+        function updateSelected(items: NodeListOf<Element>) {
+          items.forEach(function(item: Element, index: number) {
             if (index === selectedIndex) {
               item.classList.add('bg-red-50', 'border-l-4', 'border-red-600');
             } else {
