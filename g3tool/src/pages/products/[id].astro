@@ -73,25 +73,25 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Trang chù",
-      "item": "https://g3tool.vn/"
+      "item": "https://g3tool.com/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Sản phẩm",
-      "item": "https://g3tool.vn/products"
+      "item": "https://g3tool.com/products"
     },
     ...(category ? [{
       "@type": "ListItem",
       "position": 3,
       "name": category.data.name,
-      "item": `https://g3tool.vn/products?category=${category.data.slug}`
+      "item": `https://g3tool.com/products?category=${category.data.slug}`
     }] : []),
     {
       "@type": "ListItem",
       "position": category ? 4 : 3,
       "name": product.data.name,
-      "item": `https://g3tool.vn/products/${product.id}`
+      "item": `https://g3tool.com/products/${product.id}`
     }
   ]
 };
@@ -109,7 +109,7 @@ const productSchema = {
   },
   "offers": {
     "@type": "Offer",
-    "url": `https://g3tool.vn/products/${product.id}`,
+    "url": `https://g3tool.com/products/${product.id}`,
     "priceCurrency": "VND",
     "price": product.data.price,
     "priceValidUntil": "2026-12-31",
@@ -128,7 +128,7 @@ const productSchema = {
   title={`${product.data.name} - G3Tool`}
   description={product.data.description}
   image={product.data.image}
-  canonicalUrl={`https://g3tool.vn/products/${product.id}`}
+  canonicalUrl={`https://g3tool.com/products/${product.id}`}
   structuredData={[breadcrumbSchema, productSchema]}
 >
   <!-- Hero Product Section -->
