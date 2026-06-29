@@ -40,7 +40,8 @@ const companyInfo = {
   phone: '0947776662',
   phoneFormatted: '094 777 6662',
   email: 'info@g3active.com',
-  address: 'Lô A17, Khu đô thị mới, xã Hùng Cường, TP. Hưng Yên, tỉnh Hưng Yên, Việt Nam',
+  showroomAddress: 'SH14-113, San hô 14, khu đô thị Ocenpark 2, xã Nghĩa Trụ, Hưng Yên',
+  companyAddress: 'Thôn Văn Ổ, Xã Đại Đồng, Tỉnh Hưng Yên, Việt Nam',
   taxCode: '0901940268',
   website: 'https://g3active.com'
 };
@@ -156,8 +157,8 @@ const ogImage = image;
       "taxID": companyInfo.taxCode,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Lô A17, Khu đô thị mới, xã Hùng Cường",
-        "addressLocality": "TP. Hưng Yên",
+        "streetAddress": companyInfo.companyAddress,
+        "addressLocality": "Hưng Yên",
         "addressRegion": "Hưng Yên",
         "addressCountry": "VN"
       },
@@ -187,8 +188,8 @@ const ogImage = image;
       "priceRange": "₫₫",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Lô A17, Khu đô thị mới, xã Hùng Cường",
-        "addressLocality": "TP. Hưng Yên",
+        "streetAddress": companyInfo.showroomAddress,
+        "addressLocality": "Hưng Yên",
         "addressRegion": "Hưng Yên",
         "postalCode": "17000",
         "addressCountry": "VN"
